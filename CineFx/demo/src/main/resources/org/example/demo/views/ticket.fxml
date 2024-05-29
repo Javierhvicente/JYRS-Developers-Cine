@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #061326;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.demo.view.controllers.DetallesCompraViewController">
+<AnchorPane stylesheets="@../styles/cine.css" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #061326;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.demo.view.controllers.DetallesCompraViewController">
     <children>
         <VBox prefHeight="500.0" prefWidth="700.0">
             <children>
@@ -130,9 +130,9 @@
                     <children>
                         <AnchorPane prefHeight="50.0" prefWidth="714.0">
                             <children>
-                                <Button fx:id="fxBotonCerrarSesion" layoutX="72.0" layoutY="12.0" mnemonicParsing="false" text="CERRAR SESIÓN" />
-                                <Button fx:id="fxBotonSeleccionarPelicula" layoutX="277.0" layoutY="12.0" mnemonicParsing="false" text="SELECCIONAR PELICULA" />
-                                <Button fx:id="fxBotonImprimirPdf" layoutX="535.0" layoutY="12.0" mnemonicParsing="false" text="IMPRIMIR PDF" AnchorPane.leftAnchor="535.0" />
+                                <Button fx:id="fxBotonCerrarSesion" layoutX="72.0" layoutY="12.0" mnemonicParsing="false" style="-fx-background-color: white" text="CERRAR SESIÓN" />
+                                <Button fx:id="fxBotonSeleccionarPelicula" layoutX="277.0" layoutY="12.0" mnemonicParsing="false" style="-fx-background-color: white" text="SELECCIONAR PELICULA" />
+                                <Button fx:id="fxBotonImprimirPdf" layoutX="535.0" layoutY="12.0" mnemonicParsing="false" style="-fx-background-color: white" text="IMPRIMIR PDF" AnchorPane.leftAnchor="535.0" />
                             </children>
                         </AnchorPane>
                     </children>
