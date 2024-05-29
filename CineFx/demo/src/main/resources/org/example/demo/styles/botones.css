@@ -1,0 +1,12 @@
+.button {
+    -fx-background-radius: 10;
+    -fx-background-color: #061326;
+}
+
+.button:hover {
+    -fx-cursor: hand;
+    -fx-background-color: #414141;
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 6, 0, 0, 6);
+}

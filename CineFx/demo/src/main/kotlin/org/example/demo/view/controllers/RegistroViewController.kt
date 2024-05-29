@@ -14,6 +14,8 @@ private val logger= logging()
 class RegistroViewController:KoinComponent {
     val view:RegistroViewModel by inject()
     @FXML
+    lateinit var botonVolver: Button
+    @FXML
     lateinit var nombreRegister1: TextField
     @FXML
     lateinit var apellidos: TextField

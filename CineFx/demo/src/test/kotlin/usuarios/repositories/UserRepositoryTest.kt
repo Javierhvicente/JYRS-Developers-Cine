@@ -2,19 +2,16 @@ package usuarios.repositories
 
 import org.example.demo.database.SqlDelightManager
 import org.example.demo.usuarios.models.Cliente
-import org.example.demo.usuarios.repositories.UserRepository
 import org.example.demo.usuarios.repositories.UserRepositoryImpl
-import org.junit.jupiter.api.AfterAll
 import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.Assertions.assertEquals
-import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
 
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-class UserRepositoryTest {
+class AUserRepositoryTest {
 
     private lateinit var userRepository: UserRepositoryImpl
     private lateinit var dbManager: SqlDelightManager

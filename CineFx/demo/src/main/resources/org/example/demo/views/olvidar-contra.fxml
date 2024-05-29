@@ -5,13 +5,13 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.demo.view.controllers.OlvidarContraViewController">
+<BorderPane stylesheets="@../styles/botones.css" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.demo.view.controllers.OlvidarContraViewController">
     <right>
         <AnchorPane prefHeight="500.0" prefWidth="350.0" BorderPane.alignment="CENTER">
             <children>
                 <TextField fx:id="textEmail" layoutX="103.0" layoutY="187.0" promptText="Email" style="-fx-border-color: #061326; -fx-border-width: 0px 0px 2px 0px; -fx-background-color: transparent;" AnchorPane.leftAnchor="103.0" />
                 <PasswordField fx:id="newPassword" layoutX="103.0" layoutY="236.0" promptText="New Password" style="-fx-background-color: transparent; -fx-border-color: #061326; -fx-border-width: 0px 0px 2px 0px;" AnchorPane.leftAnchor="103.0" />
-                <Button fx:id="botonRestablecer" layoutX="132.0" layoutY="338.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="90.0" style="-fx-background-color: #061326;" text="Restablecer" textFill="WHITE" AnchorPane.bottomAnchor="122.0" />
+                <Button fx:id="botonRestablecer" layoutX="132.0" layoutY="338.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="90.0" text="Restablecer" textFill="WHITE" AnchorPane.bottomAnchor="122.0" />
                 <Text fontSmoothingType="LCD" layoutX="100.0" layoutY="148.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Forgot Password">
                     <font>
                         <Font name="Arial Rounded MT Bold" size="18.0" />

@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane fx:controller="org.example.demo.view.controllers.LoginViewController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane stylesheets="@../styles/botones.css" fx:controller="org.example.demo.view.controllers.LoginViewController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <right>
       <AnchorPane prefHeight="500.0" prefWidth="350.0" BorderPane.alignment="CENTER">
          <children>
@@ -27,8 +27,8 @@
                   <Image url="@../images/key.png" />
                </image>
             </ImageView>
-            <Button fx:id="botonLogin" layoutX="91.0" layoutY="342.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="75.0" style="-fx-background-color: #061326;" text="Login" textFill="WHITE" AnchorPane.bottomAnchor="118.0" />
-            <Button fx:id="botonRegister" layoutX="183.0" layoutY="342.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="75.0" style="-fx-background-color: #061326;" text="Register" textFill="WHITE" AnchorPane.bottomAnchor="118.0" />
+            <Button fx:id="botonLogin" layoutX="91.0" layoutY="342.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="75.0" text="Login" textFill="WHITE" AnchorPane.bottomAnchor="118.0" />
+            <Button fx:id="botonRegister" layoutX="183.0" layoutY="342.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="75.0" text="Register" textFill="WHITE" AnchorPane.bottomAnchor="118.0" />
             <Hyperlink fx:id="olvidaContraseñaLink" layoutX="118.0" layoutY="437.0" text="Forgot your password?" />
             <ImageView fx:id="imagenUsers" fitHeight="63.0" fitWidth="69.0" layoutX="143.0" layoutY="49.0" pickOnBounds="true" preserveRatio="true">
                <image>

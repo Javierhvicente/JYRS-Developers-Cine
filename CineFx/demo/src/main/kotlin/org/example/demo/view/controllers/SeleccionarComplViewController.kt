@@ -24,6 +24,7 @@ class SeleccionarComplViewController :KoinComponent{
 
     val viewCompl:SeleccionarComplViewModel by inject()
 
+
     @FXML
     lateinit var tipoTextfield: TextField
     @FXML

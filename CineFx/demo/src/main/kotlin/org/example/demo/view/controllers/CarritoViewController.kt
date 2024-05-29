@@ -246,7 +246,7 @@ class CarritoViewController:KoinComponent {
 
     private fun continuarOnAction() {
         logger.debug { "boton continuar Pulsado carrito" }
-        RoutesManager.changeScene(view = RoutesManager.View.PAGO, title = "Pagar")
+        RoutesManager.changeScene(view = RoutesManager.View.PAGO, title = "Pagar", width = 350.0 , height = 378.0 )
     }
 
     private fun volverOnAction() {

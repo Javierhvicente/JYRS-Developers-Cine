@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="700.0" style="-fx-background-color: #061326;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.demo.view.controllers.SeleccionarAsientoViewController">
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="700.0" style="-fx-background-color: #061326;" stylesheets="@../styles/asientosCine.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.demo.view.controllers.SeleccionarAsientoViewController">
    <children>
       <HBox alignment="TOP_CENTER" prefHeight="0.0" prefWidth="700.0">
          <children>
@@ -245,12 +245,12 @@
                         </Label>
                      </children>
                   </GridPane>
-                  <Button fx:id="botonVolver" layoutX="80.0" layoutY="418.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="69.0" text="Volver" AnchorPane.leftAnchor="80.0">
+                  <Button fx:id="botonVolver" layoutX="80.0" layoutY="418.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="69.0" style="-fx-background-color: white;" text="Volver" AnchorPane.leftAnchor="80.0">
                      <font>
                         <Font name="Cambria Math" size="12.0" />
                      </font>
                   </Button>
-                  <Button fx:id="botonContinuar" layoutX="566.0" layoutY="418.0" mnemonicParsing="false" text="Continuar" AnchorPane.rightAnchor="80.0" />
+                  <Button fx:id="botonContinuar" layoutX="566.0" layoutY="418.0" mnemonicParsing="false" style="-fx-background-color: white;" text="Continuar" AnchorPane.rightAnchor="80.0" />
                </children>
             </AnchorPane>
          </children>

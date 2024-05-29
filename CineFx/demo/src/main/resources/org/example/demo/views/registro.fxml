@@ -10,12 +10,11 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.demo.view.controllers.RegistroViewController">
+<BorderPane stylesheets="@../styles/botones.css" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.demo.view.controllers.RegistroViewController">
     <right>
         <AnchorPane prefHeight="500.0" prefWidth="350.0" BorderPane.alignment="CENTER">
             <children>
                 <TextField fx:id="apellidos" layoutX="95.0" layoutY="208.0" promptText="Apellidos" style="-fx-border-color: #061326; -fx-border-width: 0px 0px 2px 0px; -fx-background-color: transparent;" AnchorPane.bottomAnchor="264.8" AnchorPane.leftAnchor="95.0" AnchorPane.rightAnchor="105.79999999999998" AnchorPane.topAnchor="208.0" />
-                <Button fx:id="botonRegister" layoutX="126.0" layoutY="387.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="95.0" style="-fx-background-color: #061326;" text="Register" textFill="WHITE" AnchorPane.bottomAnchor="75.0" AnchorPane.leftAnchor="125.0" AnchorPane.rightAnchor="125.0" AnchorPane.topAnchor="385.0" />
                 <ImageView fitHeight="63.0" fitWidth="69.0" layoutX="143.0" layoutY="52.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="143.0" AnchorPane.rightAnchor="143.40000000000003">
                     <image>
                         <Image url="@../images/user.png" />
@@ -35,6 +34,8 @@
                 <TextField fx:id="emailRegister" layoutX="100.0" layoutY="250.0" promptText="E-mail" style="-fx-border-color: #061326; -fx-border-width: 0px 0px 2px 0px; -fx-background-color: transparent;" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="250.0" />
                 <PasswordField fx:id="contraseñaConfirmarRegister" layoutX="100.0" layoutY="338.0" promptText="Confirmar contraseña" style="-fx-background-color: transparent; -fx-border-color: #061326; -fx-border-width: 0px 0px 2px 0px;" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="338.0" />
             <TextField fx:id="nombreRegister1" layoutX="95.0" layoutY="170.0" promptText="Nombre de usuario" style="-fx-border-color: #061326; -fx-border-width: 0px 0px 2px 0px; -fx-background-color: transparent;" />
+            <Button fx:id="botonRegister" layoutX="196.0" layoutY="406.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="95.0" text="Register" textFill="WHITE" />
+            <Button fx:id="botonVolver" layoutX="79.0" layoutY="406.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="95.0" text="Volver" textFill="WHITE" />
             </children>
         </AnchorPane>
     </right>

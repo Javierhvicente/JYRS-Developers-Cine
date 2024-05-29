@@ -15,6 +15,7 @@ class CineApplication : Application() {
     override fun start(stage: Stage) {
         RoutesManager.apply {
             app=this@CineApplication
+
         }
         RoutesManager.initMainStage(stage)
     }

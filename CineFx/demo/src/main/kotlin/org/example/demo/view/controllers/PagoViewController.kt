@@ -13,27 +13,32 @@ import org.lighthousegames.logging.logging
 private val logger= logging()
 class PagoViewController:KoinComponent {
 
-    val viewButacas:SeleccionarAsientoViewModel by inject()
-    val viewBCompl:SeleccionarComplViewModel by inject()
-    val viewCarrito : CarritoViewModel by inject()
-    val viewLogin : LoginViewModel by inject()
-    val view :PagoViewModel by inject()
+    val viewButacas: SeleccionarAsientoViewModel by inject()
+    val viewBCompl: SeleccionarComplViewModel by inject()
+    val viewCarrito: CarritoViewModel by inject()
+    val viewLogin: LoginViewModel by inject()
+    val view: PagoViewModel by inject()
 
     @FXML
     lateinit var menuImagen: ImageView
+
     @FXML
     lateinit var fxNombreTextField: TextField
+
     @FXML
     lateinit var fxNumeroTextField: TextField
+
     @FXML
     lateinit var fxFechaTextField: TextField
+
     @FXML
     lateinit var fxCvcTextField: TextField
+
     @FXML
     lateinit var fxPagarButton: Button
 
     @FXML
-    fun initialize(){
+    fun initialize() {
         logger.debug { "inicializando controller pago" }
         initDefaultEvents()
         initDefaultValues()
@@ -52,21 +57,28 @@ class PagoViewController:KoinComponent {
 
     private fun pagarOnAction() {
         logger.debug { "inicializando pago" }
-        if (!view.validarNumerTarjeta(fxNumeroTextField.text)) RoutesManager.alerta("Numero de tarjeta", "Introduce un numero de tarjeta valido")
-        if (!view.validarFecha(fxFechaTextField.text)) RoutesManager.alerta("Fecha caducidad", "Introduce una fecha valida")
+        if (!view.validarNumerTarjeta(fxNumeroTextField.text)) RoutesManager.alerta(
+            "Numero de tarjeta",
+            "Introduce un numero de tarjeta valido"
+        )
+        if (!view.validarFecha(fxFechaTextField.text)) RoutesManager.alerta(
+            "Fecha caducidad",
+            "Introduce una fecha valida"
+        )
         if (!view.validarCvc(fxCvcTextField.text)) RoutesManager.alerta("CVC", "Introduce un CVC valido")
-        if (view.validarTarjeta(fxNumeroTextField.text,fxFechaTextField.text,fxCvcTextField.text)){
+        if (view.validarTarjeta(fxNumeroTextField.text, fxFechaTextField.text, fxCvcTextField.text)) {
             if (view.crearVenta(
-                cliente = viewLogin.state.value.usuario!!,
-                listaComplementos = viewCarrito.state.value.complementos,
-                listaButaca = viewCarrito.state.value.butacas
-            )){
+                    cliente = viewLogin.state.value.usuario!!,
+                    listaComplementos = viewCarrito.state.value.complementos,
+                    listaButaca = viewCarrito.state.value.butacas
+                )
+            ) {
                 logger.debug { "venta creada" }
                 view.state.value.pelicula = viewCarrito.state.value.pelicula
                 viewButacas.actualizarButacas()
                 viewBCompl.borrarSeleccionado()
                 RoutesManager.changeScene(view = RoutesManager.View.TICKET, title = "Detalle de tu compra")
-            }else{
+            } else {
                 logger.debug { "venta no creada" }
                 RoutesManager.alerta("Venta", "No se a podido crear la venta")
             }
@@ -79,6 +91,4 @@ class PagoViewController:KoinComponent {
         logger.debug { "cambiando escena a carrito desde pago" }
         RoutesManager.changeScene(view = RoutesManager.View.CARRITO, title = "Carrito")
     }
-
-
 }
