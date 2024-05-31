@@ -1,0 +1,6 @@
+tipo_complemento,nombre,precio,imagen
+BEBIDA,AGUA,2.0,agua.png
+BEBIDA,REFRESCO,3.0,soda.png
+COMIDA,PALOMITAS,3.0,palomitas-de-maiz.png
+COMIDA,FRUTOS SECOS,2.0,tuerca.png
+COMIDA,PATATAS,2.5,patatas-fritas.png

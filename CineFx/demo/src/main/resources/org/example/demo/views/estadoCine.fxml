@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="700.0" style="-fx-background-color: #061326;" stylesheets="@../styles/cine.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.demo.view.controllers.EstadoCineViewController">
+    <children>
+        <HBox alignment="TOP_CENTER" prefHeight="122.0" prefWidth="700.0">
+            <children>
+                <AnchorPane prefHeight="94.0" prefWidth="700.0">
+                    <children>
+                        <Label layoutX="257.0" layoutY="18.6" prefHeight="58.0" prefWidth="174.0" text="ESTADO SALA" textAlignment="CENTER" textFill="WHITE" AnchorPane.topAnchor="18.6">
+                            <font>
+                                <Font name="Arial Rounded MT Bold" size="24.0" />
+                            </font>
+                        </Label>
+                        <ImageView fx:id="menuAdmin" fitHeight="40.0" fitWidth="40.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="10.0">
+                            <image>
+                                <Image url="@../images/menu.png" />
+                            </image>
+                        </ImageView>
+                    </children>
+                </AnchorPane>
+            </children>
+        </HBox>
+        <HBox alignment="TOP_CENTER" prefHeight="63.0" prefWidth="60.0">
+            <children>
+                <AnchorPane prefHeight="70.0" prefWidth="719.0">
+                    <children>
+                        <Separator prefHeight="3.0" prefWidth="700.0" />
+                        <Separator layoutY="66.0" prefHeight="3.0" prefWidth="700.0" />
+                        <Label layoutX="43.0" layoutY="15.0" prefHeight="39.0" prefWidth="94.0" text="Libre" textFill="WHITE" AnchorPane.bottomAnchor="15.400000000000006" AnchorPane.leftAnchor="45.0" AnchorPane.rightAnchor="545.8000000000001" AnchorPane.topAnchor="15.0">
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                            <graphic>
+                                <ImageView fitHeight="32.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../images/libre.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                        </Label>
+                        <Label alignment="CENTER" layoutX="154.0" layoutY="15.0" text="Asignada" textFill="WHITE" AnchorPane.bottomAnchor="15.400000000000006" AnchorPane.leftAnchor="154.0" AnchorPane.topAnchor="15.0">
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                            <graphic>
+                                <ImageView fitHeight="32.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../images/seleccionada.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                        </Label>
+                        <Label layoutX="284.0" layoutY="15.0" text="Mantenimiento" textFill="WHITE" AnchorPane.bottomAnchor="15.400000000000006" AnchorPane.rightAnchor="285.6" AnchorPane.topAnchor="15.0">
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                            <opaqueInsets>
+                                <Insets />
+                            </opaqueInsets>
+                            <graphic>
+                                <ImageView fitHeight="32.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../images/mentenimiento.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                        </Label>
+                        <Label alignment="CENTER" layoutX="448.0" layoutY="15.0" text="Vip" textFill="WHITE" AnchorPane.bottomAnchor="15.400000000000006" AnchorPane.rightAnchor="195.2" AnchorPane.topAnchor="15.0">
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                            <graphic>
+                                <ImageView fitHeight="32.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../images/vip.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                        </Label>
+                        <Label layoutX="550.0" layoutY="19.0" text="Ocupada" textFill="WHITE" AnchorPane.rightAnchor="45.0">
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                            <opaqueInsets>
+                                <Insets />
+                            </opaqueInsets>
+                            <graphic>
+                                <ImageView fitHeight="32.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../images/ocupada.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                        </Label>
+                    </children>
+                </AnchorPane>
+            </children>
+        </HBox>
+        <HBox alignment="TOP_CENTER" prefHeight="515.0" prefWidth="700.0">
+            <children>
+                <AnchorPane prefHeight="450.0" prefWidth="743.0">
+                    <children>
+                        <GridPane alignment="CENTER" layoutX="251.0" layoutY="42.0" prefHeight="381.0" prefWidth="488.0" AnchorPane.leftAnchor="251.0" AnchorPane.rightAnchor="49.799999999999955">
+                            <columnConstraints>
+                                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="50.0" />
+                                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="50.0" />
+                                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="50.0" />
+                                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="50.0" />
+                                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="50.0" />
+                                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="50.0" />
+                                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="50.0" />
+                                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="50.0" />
+                            </columnConstraints>
+                            <rowConstraints>
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            </rowConstraints>
+                            <children>
+                                <ImageView fx:id="butacaImage1a" fitHeight="29.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" />
+                                <ImageView fx:id="butacaImage1b" fitHeight="29.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" />
+                                <ImageView fx:id="butacaImage1c" fitHeight="29.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" />
+                                <ImageView fx:id="butacaImage1d" fitHeight="29.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" />
+                                <ImageView fx:id="butacaImage1e" fitHeight="29.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" />
+                                <ImageView fx:id="butacaImage1f" fitHeight="29.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" />
+                                <ImageView fx:id="butacaImage1g" fitHeight="29.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="7" />
+                                <ImageView fx:id="butacaImage2b" fitHeight="29.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                <ImageView fx:id="butacaImage2a" fitHeight="29.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                <ImageView fx:id="butacaImage2c" fitHeight="29.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                                <ImageView fx:id="butacaImage2d" fitHeight="29.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                                <ImageView fx:id="butacaImage2f" fitHeight="29.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" GridPane.rowIndex="1" />
+                                <ImageView fx:id="butacaImage2e" fitHeight="29.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="1" />
+                                <ImageView fx:id="butacaImage2g" fitHeight="29.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="7" GridPane.rowIndex="1" />
+                                <ImageView fx:id="butacaImage3a" fitHeight="29.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                <ImageView fx:id="butacaImage3b" fitHeight="29.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                                <ImageView fx:id="butacaImage3c" fitHeight="29.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                                <ImageView fx:id="butacaImage3d" fitHeight="29.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="2" />
+                                <ImageView fx:id="butacaImage3e" fitHeight="29.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="2" />
+                                <ImageView fx:id="butacaImage3f" fitHeight="29.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" GridPane.rowIndex="2" />
+                                <ImageView fx:id="butacaImage3g" fitHeight="29.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="7" GridPane.rowIndex="2" />
+                                <ImageView fx:id="butacaImage4a" fitHeight="29.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                <ImageView fx:id="butacaImage4b" fitHeight="29.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                                <ImageView fx:id="butacaImage4c" fitHeight="29.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+                                <ImageView fx:id="butacaImage4d" fitHeight="29.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="3" />
+                                <ImageView fx:id="butacaImage4e" fitHeight="29.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="3" />
+                                <ImageView fx:id="butacaImage4f" fitHeight="29.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" GridPane.rowIndex="3" />
+                                <ImageView fx:id="butacaImage4g" fitHeight="29.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="7" GridPane.rowIndex="3" />
+                                <ImageView fx:id="butacaImage5a" fitHeight="29.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                                <ImageView fx:id="butacaImage5b" fitHeight="29.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+                                <ImageView fx:id="butacaImage5c" fitHeight="29.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+                                <ImageView fx:id="butacaImage5d" fitHeight="29.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="4" />
+                                <ImageView fx:id="butacaImage5e" fitHeight="29.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="4" />
+                                <ImageView fx:id="butacaImage5f" fitHeight="29.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" GridPane.rowIndex="4" />
+                                <ImageView fx:id="butacaImage5g" fitHeight="29.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="7" GridPane.rowIndex="4" />
+                                <ImageView fx:id="butacaImage6a" fitHeight="29.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                                <ImageView fx:id="butacaImage6b" fitHeight="29.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+                                <ImageView fx:id="butacaImage6c" fitHeight="29.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="5" />
+                                <ImageView fx:id="butacaImage6d" fitHeight="29.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="5" />
+                                <ImageView fx:id="butacaImage6e" fitHeight="29.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="5" />
+                                <ImageView fx:id="butacaImage6f" fitHeight="29.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" GridPane.rowIndex="5" />
+                                <ImageView fx:id="butacaImage6g" fitHeight="29.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="7" GridPane.rowIndex="5" />
+                                <ImageView fx:id="butacaImage7a" fitHeight="29.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                                <ImageView fx:id="butacaImage7b" fitHeight="29.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+                                <ImageView fx:id="butacaImage7c" fitHeight="29.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="6" />
+                                <ImageView fx:id="butacaImage7d" fitHeight="29.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="6" />
+                                <ImageView fx:id="butacaImage7e" fitHeight="29.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="6" />
+                                <ImageView fx:id="butacaImage7f" fitHeight="29.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" GridPane.rowIndex="6" />
+                                <ImageView fx:id="butacaImage7g" fitHeight="29.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="7" GridPane.rowIndex="6" />
+                                <Label text="1" textFill="WHITE">
+                                    <font>
+                                        <Font size="15.0" />
+                                    </font>
+                                </Label>
+                                <Label text="2" textFill="WHITE" GridPane.rowIndex="1">
+                                    <font>
+                                        <Font size="15.0" />
+                                    </font>
+                                </Label>
+                                <Label text="3" textFill="WHITE" GridPane.rowIndex="2">
+                                    <font>
+                                        <Font size="15.0" />
+                                    </font>
+                                </Label>
+                                <Label text="4" textFill="WHITE" GridPane.rowIndex="3">
+                                    <font>
+                                        <Font size="15.0" />
+                                    </font>
+                                </Label>
+                                <Label text="5" textFill="WHITE" GridPane.rowIndex="4">
+                                    <font>
+                                        <Font size="15.0" />
+                                    </font>
+                                </Label>
+                                <Label text="6" textFill="WHITE" GridPane.rowIndex="5">
+                                    <font>
+                                        <Font size="15.0" />
+                                    </font>
+                                </Label>
+                                <Label text="7" textFill="WHITE" GridPane.rowIndex="6">
+                                    <font>
+                                        <Font size="15.0" />
+                                    </font>
+                                </Label>
+                                <Label text="a" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                                    <font>
+                                        <Font size="15.0" />
+                                    </font>
+                                </Label>
+                                <Label text="b" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="7">
+                                    <font>
+                                        <Font size="15.0" />
+                                    </font>
+                                </Label>
+                                <Label text="c" textFill="WHITE" GridPane.columnIndex="3" GridPane.rowIndex="7">
+                                    <font>
+                                        <Font size="15.0" />
+                                    </font>
+                                </Label>
+                                <Label text="d" textFill="WHITE" GridPane.columnIndex="4" GridPane.rowIndex="7">
+                                    <font>
+                                        <Font size="15.0" />
+                                    </font>
+                                </Label>
+                                <Label text="e" textFill="WHITE" GridPane.columnIndex="5" GridPane.rowIndex="7">
+                                    <font>
+                                        <Font size="15.0" />
+                                    </font>
+                                </Label>
+                                <Label text="f" textFill="WHITE" GridPane.columnIndex="6" GridPane.rowIndex="7">
+                                    <font>
+                                        <Font size="15.0" />
+                                    </font>
+                                </Label>
+                                <Label text="g" textFill="WHITE" GridPane.columnIndex="7" GridPane.rowIndex="7">
+                                    <font>
+                                        <Font size="15.0" />
+                                    </font>
+                                </Label>
+                            </children>
+                        </GridPane>
+                  <Label layoutX="48.0" layoutY="263.0" prefHeight="35.0" prefWidth="173.0" text="RECAUDACIÓN" textFill="WHITE">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="15.0" layoutY="318.0" prefHeight="20.0" prefWidth="119.0" text="Butacas Normales:" textFill="WHITE">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="15.0" layoutY="355.0" prefHeight="20.0" prefWidth="84.0" text="Butacas Vip:" textFill="WHITE">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="recaudacionNormal" layoutX="143.0" layoutY="318.0" prefHeight="18.0" prefWidth="46.0" textFill="#fcfafa">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Label>
+                  <Label fx:id="recaudacionVip" layoutX="112.0" layoutY="355.0" prefHeight="18.0" prefWidth="46.0" textFill="#fcfafa">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Label>
+                  <Label layoutX="15.0" layoutY="414.0" prefHeight="20.0" prefWidth="119.0" text="Recaudacion total:" textFill="WHITE">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="recaudacionTotal" layoutX="146.0" layoutY="414.0" prefHeight="20.0" prefWidth="84.0" textFill="#fcfafa">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Label>
+                  <ImageView fitHeight="166.0" fitWidth="242.0" layoutX="21.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/logo.png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="localDate" layoutX="55.0" layoutY="223.0" prefHeight="20.0" prefWidth="181.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Separator layoutX="16.0" layoutY="396.0" prefHeight="3.0" prefWidth="210.0" />
+                    </children>
+                </AnchorPane>
+            </children>
+        </HBox>
+    </children>
+</VBox>

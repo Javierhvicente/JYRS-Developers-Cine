@@ -1,0 +1,101 @@
+plugins {
+  id 'java'
+  id 'application'
+  id 'org.jetbrains.kotlin.jvm' version '1.9.23'
+  id 'org.javamodularity.moduleplugin' version '1.8.12'
+  id 'org.openjfx.javafxplugin' version '0.0.13'
+  id 'org.beryx.jlink' version '2.25.0'
+  id 'org.jetbrains.kotlin.plugin.serialization' version '1.9.23'
+  id 'app.cash.sqldelight' version "2.0.2"
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+  mavenCentral()
+}
+
+ext {
+  junitVersion = '5.10.0'
+}
+
+
+tasks.withType(JavaCompile) {
+  options.encoding = 'UTF-8'
+}
+
+application {
+  mainModule = 'org.example.demo'
+  mainClass = 'org.example.demo.CineApplication'
+}
+kotlin {
+  jvmToolchain(21)
+}
+
+javafx {
+  version = '21'
+  modules = ['javafx.controls', 'javafx.fxml']
+}
+
+dependencies {
+
+  testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
+  testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
+
+  implementation("com.michael-bull.kotlin-result:kotlin-result:2.0.0")
+
+  implementation(platform("io.insert-koin:koin-bom:3.5.6"))
+  implementation("io.insert-koin:koin-core")
+
+  implementation("com.vaadin:open:8.5.0")
+
+  implementation("org.lighthousegames:logging:1.3.0")
+  implementation("ch.qos.logback:logback-classic:1.5.0")
+
+  implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.3")
+
+  implementation("app.cash.sqldelight:sqlite-driver:2.0.2")
+
+  implementation("org.xerial:sqlite-jdbc:3.45.2.0")
+  implementation("org.mybatis:mybatis:3.5.13")
+
+  testImplementation("org.mockito.kotlin:mockito-kotlin:5.3.1")
+  testImplementation("org.mockito:mockito-junit-jupiter:5.12.0")
+
+}
+
+test {
+  useJUnitPlatform()
+}
+
+jlink {
+  imageZip = project.file("${buildDir}/distributions/app-${javafx.platform.classifier}.zip")
+  options = ['--strip-debug', '--compress', '2', '--no-header-files', '--no-man-pages']
+  launcher {
+    name = 'app'
+  }
+}
+
+jlinkZip {
+  group = 'distribution'
+}
+
+tasks.jar {
+  manifest {
+    attributes 'Main-Class': 'org.example.demo.CineApplication'
+  }
+
+  from {
+    configurations["compileClasspath"].collect { it.isDirectory() ? it : zipTree(it) }
+  }
+
+  duplicatesStrategy = DuplicatesStrategy.INCLUDE
+}
+sqldelight {
+  databases {
+    create("AppDatabase") {
+      packageName.set("org.example.database")
+    }
+  }
+}

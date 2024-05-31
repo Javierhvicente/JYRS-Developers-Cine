@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" stylesheets="@../styles/cine.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.demo.view.controllers.SeleccionarComplViewController">
+    <children>
+        <AnchorPane prefHeight="500.0" prefWidth="700.0">
+            <children>
+                <VBox layoutY="-1.0" prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #061326;" AnchorPane.bottomAnchor="1.0">
+                    <children>
+                        <AnchorPane prefHeight="500.0" prefWidth="520.0">
+                            <children>
+                                <HBox prefHeight="87.0" prefWidth="700.0">
+                                    <children>
+                                        <AnchorPane prefHeight="96.0" prefWidth="698.0">
+                                            <children>
+                                                <Label layoutX="204.0" layoutY="30.0" text="ELEGIR COMPLEMENTO" textFill="WHITE">
+                                                    <font>
+                                                        <Font name="Arial Rounded MT Bold" size="24.0" />
+                                                    </font>
+                                                </Label>
+                                                <Separator layoutX="-2.0" layoutY="81.0" prefHeight="0.0" prefWidth="700.0" />
+                                            </children>
+                                        </AnchorPane>
+                                    </children>
+                                </HBox>
+                                <VBox fx:id="caja2" layoutX="388.0" layoutY="114.0" prefHeight="321.0" prefWidth="280.0" AnchorPane.bottomAnchor="51.0" AnchorPane.rightAnchor="36.0" AnchorPane.topAnchor="118.39999999999998">
+                                    <children>
+                                        <AnchorPane prefHeight="330.0" prefWidth="280.0">
+                                            <children>
+                                                <Label layoutX="56.0" layoutY="27.0" text="COMPLEMENTO">
+                                                    <font>
+                                                        <Font name="Cambria" size="24.0" />
+                                                    </font>
+                                                </Label>
+                                                <ImageView fx:id="imagenComplemento" fitHeight="45.0" fitWidth="60.0" layoutX="117.0" layoutY="63.0" pickOnBounds="true" preserveRatio="true">
+                                                    <image>
+                                                        <Image url="@../images/interrogacion.png" />
+                                                    </image>
+                                                </ImageView>
+                                                <Label layoutX="35.0" layoutY="138.0" text="Tipo" AnchorPane.leftAnchor="35.0">
+                                                    <font>
+                                                        <Font name="Cambria" size="12.0" />
+                                                    </font>
+                                                </Label>
+                                                <Label layoutX="35.0" layoutY="175.0" text="Nombre" AnchorPane.leftAnchor="35.0">
+                                                    <font>
+                                                        <Font name="Cambria" size="12.0" />
+                                                    </font>
+                                                </Label>
+                                                <Label layoutX="35.0" layoutY="213.0" text="Precio" AnchorPane.leftAnchor="35.0">
+                                                    <font>
+                                                        <Font name="Cambria" size="12.0" />
+                                                    </font>
+                                                </Label>
+                                                <TextField fx:id="tipoTextfield" editable="false" layoutX="88.0" layoutY="134.0" />
+                                                <TextField fx:id="nombreTextfield" editable="false" layoutX="88.0" layoutY="171.0" />
+                                                <TextField fx:id="precioTextfield" editable="false" layoutX="88.0" layoutY="209.0" />
+                                                <Button fx:id="añadirComplementoButton" layoutX="76.0" layoutY="253.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="135.0" style="-fx-background-color: white;" text="Añadir complemento" />
+                                                <Button fx:id="eliminarComplementoBoton" layoutX="76.0" layoutY="290.0" mnemonicParsing="false" style="-fx-background-color: white;" text="Eliminar complemento" />
+                                            </children>
+                                        </AnchorPane>
+                                    </children>
+                                </VBox>
+                                <Button fx:id="volverButton" layoutX="158.0" layoutY="458.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="69.0" style="-fx-background-color: white;" text="Volver" AnchorPane.bottomAnchor="16.0" AnchorPane.leftAnchor="158.0" AnchorPane.topAnchor="458.0">
+                                    <font>
+                                        <Font name="Bookman Old Style" size="12.0" />
+                                    </font>
+                                </Button>
+                                <Button fx:id="continuarButton" layoutX="502.0" layoutY="456.0" mnemonicParsing="false" style="-fx-background-color: white;" text="Continuar" AnchorPane.bottomAnchor="16.0" AnchorPane.rightAnchor="122.0" AnchorPane.topAnchor="458.0">
+                                    <font>
+                                        <Font name="Bookman Old Style" size="12.0" />
+                                    </font>
+                                </Button>
+                                <VBox fx:id="caja" layoutX="36.0" layoutY="148.0" prefHeight="321.0" prefWidth="310.0" AnchorPane.bottomAnchor="51.0" AnchorPane.leftAnchor="36.0" AnchorPane.topAnchor="118.0">
+                                    <children>
+                                        <AnchorPane prefHeight="350.0" prefWidth="310.0">
+                                            <children>
+                                                <TextField fx:id="filtroNombre" layoutX="7.0" layoutY="6.0" prefHeight="26.0" prefWidth="150.0" promptText="Nombre" />
+                                                <ComboBox fx:id="filtroPrecio" layoutX="167.0" layoutY="6.0" prefHeight="26.0" prefWidth="135.0" promptText="Precio" />
+                                                <TableView fx:id="tablaComplementos" layoutX="6.0" layoutY="42.0" prefHeight="283.0" prefWidth="298.0">
+                                                    <columns>
+                                                        <TableColumn fx:id="nombreColumna" minWidth="100.0" prefWidth="157.99999618530273" text="Nombre" />
+                                                        <TableColumn fx:id="precioColumna" minWidth="100.0" prefWidth="139.6000213623047" text="Precio" />
+                                                    </columns>
+                                                </TableView>
+                                            </children>
+                                        </AnchorPane>
+                                    </children></VBox>
+                                <Separator layoutX="265.0" layoutY="470.0" prefWidth="200.0" AnchorPane.bottomAnchor="26.0" AnchorPane.leftAnchor="265.0" AnchorPane.rightAnchor="235.79999999999995" />
+                                <Separator layoutX="14.0" layoutY="118.0" orientation="VERTICAL" prefHeight="330.0" prefWidth="0.0" AnchorPane.leftAnchor="16.0" />
+                                <Separator layoutX="16.0" layoutY="468.0" prefHeight="3.0" prefWidth="100.0" AnchorPane.bottomAnchor="26.0" AnchorPane.leftAnchor="16.0" />
+                            </children></AnchorPane>
+                    </children>
+                </VBox>
+            </children>
+        </AnchorPane>
+    </children>
+</VBox>

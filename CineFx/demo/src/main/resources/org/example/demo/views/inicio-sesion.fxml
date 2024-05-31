@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane stylesheets="@../styles/botones.css" fx:controller="org.example.demo.view.controllers.LoginViewController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <right>
+      <AnchorPane prefHeight="500.0" prefWidth="350.0" BorderPane.alignment="CENTER">
+         <children>
+            <TextField fx:id="nombreLogin" layoutX="121.0" layoutY="200.0" promptText="Nombre de usuario" style="-fx-border-color: #061326; -fx-border-width: 0px 0px 2px 0px; -fx-background-color: transparent;" AnchorPane.leftAnchor="121.0" />
+            <PasswordField fx:id="contraseñaLogin" layoutX="122.0" layoutY="265.0" promptText="Contraseña" style="-fx-background-color: transparent; -fx-border-color: #061326; -fx-border-width: 0px 0px 2px 0px;" AnchorPane.leftAnchor="121.0" />
+            <ImageView fx:id="imagenUser" fitHeight="31.0" fitWidth="33.0" layoutX="74.0" layoutY="201.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/user.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="imagenKey" fitHeight="31.0" fitWidth="33.0" layoutX="74.0" layoutY="266.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/key.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="botonLogin" layoutX="91.0" layoutY="342.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="75.0" text="Login" textFill="WHITE" AnchorPane.bottomAnchor="118.0" />
+            <Button fx:id="botonRegister" layoutX="183.0" layoutY="342.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="75.0" text="Register" textFill="WHITE" AnchorPane.bottomAnchor="118.0" />
+            <Hyperlink fx:id="olvidaContraseñaLink" layoutX="118.0" layoutY="437.0" text="Forgot your password?" />
+            <ImageView fx:id="imagenUsers" fitHeight="63.0" fitWidth="69.0" layoutX="143.0" layoutY="49.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/users.png" />
+               </image>
+            </ImageView>
+            <Text layoutX="112.0" layoutY="148.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Iniciar sesión">
+               <font>
+                  <Font name="Cambria Math" size="22.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+   </right>
+   <left>
+      <AnchorPane prefHeight="500.0" prefWidth="350.0" style="-fx-background-color: #061326;" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fx:id="imagenLogo"  fitHeight="218.0" fitWidth="301.0" layoutX="26.0" layoutY="115.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/logo.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </left>
+</BorderPane>

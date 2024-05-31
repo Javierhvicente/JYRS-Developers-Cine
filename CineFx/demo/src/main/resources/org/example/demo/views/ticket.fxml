@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #061326;" stylesheets="@../styles/cine.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.demo.view.controllers.DetallesCompraViewController">
+    <children>
+        <VBox prefHeight="500.0" prefWidth="700.0">
+            <children>
+                <HBox prefHeight="72.0" prefWidth="654.0">
+                    <children>
+                        <AnchorPane prefHeight="72.0" prefWidth="701.0">
+                            <children>
+                                <Label layoutX="230.0" layoutY="3.0" text="DETALLES DE TU COMPRA" textFill="WHITE">
+                                    <font>
+                                        <Font name="Arial Rounded MT Bold" size="18.0" />
+                                    </font>
+                                </Label>
+                                <Label layoutX="271.0" layoutY="21.0" text="---------------------------------" textFill="WHITE" />
+                                <ImageView fx:id="imagenMenu" fitHeight="40.0" fitWidth="40.0" layoutX="18.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../images/menu.png" />
+                                    </image>
+                                </ImageView>
+                            </children>
+                        </AnchorPane>
+                    </children>
+                </HBox>
+                <HBox prefHeight="78.0" prefWidth="341.0">
+                    <children>
+                        <VBox prefHeight="91.0" prefWidth="302.0">
+                            <children>
+                                <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                                    <children>
+                                        <Label layoutX="27.0" layoutY="5.0" text="INFORMACIÓN DEL CLIENTE" textFill="WHITE" AnchorPane.leftAnchor="28.0">
+                                            <font>
+                                                <Font name="Arial Rounded MT Bold" size="18.0" />
+                                            </font>
+                                        </Label>
+                                        <Label layoutX="35.0" layoutY="31.0" text="Nombre:" textFill="WHITE" AnchorPane.leftAnchor="35.0">
+                                            <font>
+                                                <Font name="Cambria Math" size="14.0" />
+                                            </font>
+                                        </Label>
+                                        <Label layoutX="35.0" layoutY="55.0" text="Correo electrónico:" textFill="WHITE" AnchorPane.leftAnchor="35.0">
+                                            <font>
+                                                <Font name="Cambria Math" size="14.0" />
+                                            </font>
+                                        </Label>
+                                        <Label fx:id="nombreLabel" layoutX="102.0" layoutY="30.0" textFill="WHITE">
+                                 <font>
+                                    <Font name="Cambria" size="14.0" />
+                                 </font></Label>
+                                        <Label fx:id="correoLabel" layoutX="160.0" layoutY="54.0" textFill="WHITE">
+                                 <font>
+                                    <Font name="Cambria" size="14.0" />
+                                 </font></Label>
+                                    </children>
+                                </AnchorPane>
+                            </children>
+                        </VBox>
+                    </children>
+                </HBox>
+                <HBox prefHeight="69.0" prefWidth="600.0">
+                    <children>
+                        <VBox prefHeight="102.0" prefWidth="314.0">
+                            <children>
+                                <AnchorPane prefHeight="73.0" prefWidth="314.0">
+                                    <children>
+                                        <Label layoutX="113.0" layoutY="5.0" text="PELÍCULA" textFill="WHITE" AnchorPane.leftAnchor="28.0">
+                                            <font>
+                                                <Font name="Arial Rounded MT Bold" size="18.0" />
+                                            </font>
+                                        </Label>
+                                        <Label layoutX="22.0" layoutY="35.0" text="Titulo:" textFill="WHITE" AnchorPane.leftAnchor="35.0">
+                                            <font>
+                                                <Font name="Cambria Math" size="14.0" />
+                                            </font>
+                                        </Label>
+                                        <Label fx:id="tituloLabel" layoutX="88.0" layoutY="34.0" textFill="WHITE">
+                                 <font>
+                                    <Font name="Cambria" size="14.0" />
+                                 </font></Label>
+                                    </children>
+                                </AnchorPane>
+                            </children>
+                        </VBox>
+                    </children>
+                </HBox>
+                <HBox prefHeight="87.0" prefWidth="600.0">
+                    <children>
+                        <AnchorPane prefHeight="87.0" prefWidth="600.0">
+                            <children>
+                                <Label layoutX="28.0" layoutY="2.0" text="COMPLEMENTOS" textFill="WHITE" AnchorPane.leftAnchor="28.0">
+                                    <font>
+                                        <Font name="Arial Rounded MT Bold" size="18.0" />
+                                    </font>
+                                </Label>
+                        <TextArea fx:id="complementosLista" editable="false" layoutX="26.0" layoutY="25.0" prefHeight="57.0" prefWidth="334.0" />
+                            </children>
+                        </AnchorPane>
+                    </children>
+                </HBox>
+                <HBox prefHeight="82.0" prefWidth="600.0">
+                    <children>
+                        <AnchorPane prefHeight="82.0" prefWidth="707.0">
+                            <children>
+                                <Label layoutX="32.0" layoutY="5.0" text="BUTACAS" textFill="WHITE" AnchorPane.leftAnchor="28.0">
+                                    <font>
+                                        <Font name="Arial Rounded MT Bold" size="18.0" />
+                                    </font>
+                                </Label>
+                        <TextArea fx:id="butacasLista" editable="false" layoutX="28.0" layoutY="37.0" prefHeight="57.0" prefWidth="334.0" />
+                            </children>
+                        </AnchorPane>
+                    </children></HBox>
+                <HBox prefHeight="58.0" prefWidth="700.0">
+                    <children>
+                        <AnchorPane prefHeight="107.0" prefWidth="703.0">
+                            <children>
+                                <Label layoutX="31.0" layoutY="5.0" text="TOTAL:" textFill="WHITE" AnchorPane.leftAnchor="28.0">
+                                    <font>
+                                        <Font name="Arial Rounded MT Bold" size="18.0" />
+                                    </font>
+                                </Label>
+                                <Label fx:id="fxTotalLabel" layoutX="105.0" layoutY="9.0" textFill="WHITE">
+                           <font>
+                              <Font name="Cambria" size="14.0" />
+                           </font></Label>
+                            </children>
+                        </AnchorPane>
+                    </children>
+                </HBox>
+                <HBox prefHeight="49.0" prefWidth="700.0">
+                    <children>
+                        <AnchorPane prefHeight="50.0" prefWidth="714.0">
+                            <children>
+                                <Button fx:id="fxBotonCerrarSesion" layoutX="72.0" layoutY="12.0" mnemonicParsing="false" style="-fx-background-color: white;" text="CERRAR SESIÓN">
+                           <graphic>
+                              <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../icons/exit.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic></Button>
+                                <Button fx:id="fxBotonSeleccionarPelicula" layoutX="277.0" layoutY="12.0" mnemonicParsing="false" style="-fx-background-color: white;" text="SELECCIONAR PELICULA">
+                           <graphic>
+                              <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../icons/new.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic></Button>
+                                <Button fx:id="fxBotonImprimirPdf" layoutX="535.0" layoutY="12.0" mnemonicParsing="false" style="-fx-background-color: white;" text="IMPRIMIR TICKET" AnchorPane.leftAnchor="535.0">
+                           <graphic>
+                              <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../icons/file-export.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic></Button>
+                            </children>
+                        </AnchorPane>
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>

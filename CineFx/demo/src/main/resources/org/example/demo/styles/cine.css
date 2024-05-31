@@ -1,0 +1,58 @@
+
+#caja{
+    -fx-background-color: #cfcfcf;
+    -fx-background-radius: 15;
+}
+
+#caja2{
+    -fx-background-color: #cfcfcf;
+    -fx-background-radius: 15;
+}
+
+#tablaComplementos{
+    -fx-background-radius: 15;
+}
+
+.button {
+    -fx-background-radius: 10;
+    -fx-background-color: #061326;
+}
+
+.button:hover {
+    -fx-cursor: hand;
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 6, 0, 0, 6);
+}
+
+.text-field{
+    -fx-cursor: hand;
+    -fx-background-radius: 10;
+}
+
+#tablaActButaca{
+    -fx-background-radius: 15;
+}
+
+#tablaInfButaca{
+    -fx-background-radius: 15;
+    -fx-background-color: #cfcfcf;
+}
+
+#tablaGestComplementos{
+    -fx-background-radius: 15;
+}
+
+#gestionComplemento{
+    -fx-background-color: #cfcfcf;
+    -fx-background-radius: 15;
+}
+
+#menuAdmin{
+    .image-view:hover{
+        -fx-cursor: hand;
+        -fx-scale-x: 1.05;
+        -fx-scale-y: 1.05;
+        -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 10, 0, 0, 10);
+    }
+}

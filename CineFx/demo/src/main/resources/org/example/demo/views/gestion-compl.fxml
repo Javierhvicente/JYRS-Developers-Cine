@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" stylesheets="@../styles/cine.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.demo.view.controllers.GestionComplViewController">
+    <children>
+        <AnchorPane prefHeight="500.0" prefWidth="700.0">
+            <children>
+                <VBox layoutY="-1.0" prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #061326;" AnchorPane.bottomAnchor="1.0">
+                    <children>
+                        <AnchorPane prefHeight="500.0" prefWidth="520.0">
+                            <children>
+                                <HBox prefHeight="87.0" prefWidth="700.0">
+                                    <children>
+                                        <AnchorPane prefHeight="87.0" prefWidth="624.0">
+                                            <children>
+                                                <Label layoutX="205.0" layoutY="30.0" text="GESTIONAR COMPLEMENTOS" textFill="WHITE">
+                                                    <font>
+                                                        <Font name="Arial Rounded MT Bold" size="24.0" />
+                                                    </font>
+                                                </Label>
+                                                <Separator layoutX="-2.0" layoutY="81.0" prefHeight="0.0" prefWidth="700.0" />
+                                                <ImageView fx:id="menuAdmin" fitHeight="40.0" fitWidth="40.0" layoutX="14.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="10.0">
+                                                    <image>
+                                                        <Image url="@../images/menu.png" />
+                                                    </image>
+                                                </ImageView>
+                                            </children>
+                                        </AnchorPane>
+                                    </children>
+                                </HBox>
+                                <VBox fx:id="gestionComplemento" layoutX="388.0" layoutY="118.4" prefHeight="330.0" prefWidth="280.0" AnchorPane.bottomAnchor="52.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="118.0">
+                                    <children>
+                                        <AnchorPane prefHeight="333.0" prefWidth="276.0">
+                                            <children>
+                                                <Label layoutX="56.0" layoutY="21.0" text="COMPLEMENTO">
+                                                    <font>
+                                                        <Font name="Cambria" size="24.0" />
+                                                    </font>
+                                                </Label>
+                                                <ImageView fx:id="imagenComplemento" fitHeight="45.0" fitWidth="60.0" layoutX="117.0" layoutY="63.0" pickOnBounds="true" preserveRatio="true">
+                                                    <image>
+                                                        <Image url="@../images/interrogacion.png" />
+                                                    </image>
+                                                </ImageView>
+                                                <Label layoutX="35.0" layoutY="130.0" text="Tipo" AnchorPane.leftAnchor="35.0">
+                                                    <font>
+                                                        <Font name="Cambria" size="12.0" />
+                                                    </font>
+                                                </Label>
+                                                <Label layoutX="35.0" layoutY="167.0" text="Nombre" AnchorPane.leftAnchor="35.0">
+                                                    <font>
+                                                        <Font name="Cambria" size="12.0" />
+                                                    </font>
+                                                </Label>
+                                                <Label layoutX="35.0" layoutY="205.0" text="Precio" AnchorPane.leftAnchor="35.0">
+                                                    <font>
+                                                        <Font name="Cambria" size="12.0" />
+                                                    </font>
+                                                </Label>
+                                                <TextField fx:id="tipoTextfield" editable="false" layoutX="90.4" layoutY="127.0" AnchorPane.rightAnchor="40.0" />
+                                                <TextField fx:id="nombreTextfield" editable="false" layoutX="90.4" layoutY="164.0" AnchorPane.rightAnchor="40.0" />
+                                                <TextField fx:id="precioTextfield" editable="false" layoutX="90.4" layoutY="202.0" AnchorPane.rightAnchor="40.0" />
+                                                <Button fx:id="añadirButton" layoutX="32.0" layoutY="267.0" mnemonicParsing="false" style="-fx-background-color: white;" text="Añadir" AnchorPane.leftAnchor="32.0">
+                                                    <font>
+                                                        <Font name="Bookman Old Style" size="12.0" />
+                                                    </font></Button>
+                                                <Button fx:id="modificarButton" layoutX="104.0" layoutY="267.0" mnemonicParsing="false" style="-fx-background-color: white;" text="Modificar">
+                                                    <font>
+                                                        <Font name="Bookman Old Style" size="12.0" />
+                                                    </font>
+                                                </Button>
+                                                <Button fx:id="eliminarButton" layoutX="195.0" layoutY="267.0" mnemonicParsing="false" style="-fx-background-color: white;" text="Eliminar" AnchorPane.rightAnchor="17.80000000000001">
+                                                    <font>
+                                                        <Font name="Bookman Old Style" size="12.0" />
+                                                    </font>
+                                                </Button>
+                                            </children>
+                                        </AnchorPane>
+                                    </children>
+                                </VBox>
+                                <VBox fx:id="tablaGestComplementos" layoutX="36.0" layoutY="118.0" prefHeight="330.0" prefWidth="310.0" style="-fx-background-color: cfcfcf;" AnchorPane.bottomAnchor="51.200000000000045" AnchorPane.leftAnchor="36.0" AnchorPane.topAnchor="118.0" />
+                                <TextField fx:id="filtroNombre" layoutX="43.0" layoutY="124.0" prefHeight="26.0" prefWidth="139.0" promptText="Nombre" />
+                                <TableView fx:id="tablaComplementos" layoutX="41.0" layoutY="166.0" prefHeight="276.0" prefWidth="298.0">
+                                    <columns>
+                                        <TableColumn fx:id="nombreColumna" minWidth="100.0" prefWidth="141.60003662109375" text="Nombre" />
+                                        <TableColumn fx:id="precioColumna" minWidth="100.0" prefWidth="156.79998779296875" text="Precio" />
+                                    </columns>
+                                </TableView>
+                                <ComboBox fx:id="filtroPrecio" layoutX="188.0" layoutY="124.0" prefHeight="26.0" prefWidth="150.0" promptText="Precio" />
+                                <Separator layoutX="14.0" layoutY="118.0" orientation="VERTICAL" prefHeight="330.0" prefWidth="0.0" AnchorPane.leftAnchor="16.0" />
+                        <Button fx:id="importarBoton" layoutX="199.0" layoutY="460.0" mnemonicParsing="false" style="-fx-background-color: white;" text="IMPORTAR" />
+                        <Button fx:id="exportarBoton" layoutX="384.0" layoutY="460.0" mnemonicParsing="false" style="-fx-background-color: white;" text="EXPORTAR" />
+                            </children>
+                        </AnchorPane>
+                    </children>
+                </VBox>
+            </children>
+        </AnchorPane>
+    </children>
+</VBox>

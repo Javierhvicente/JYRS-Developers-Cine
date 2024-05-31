@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #061326;" stylesheets="@../styles/cine.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.demo.view.controllers.PagoViewController">
+    <children>
+        <VBox prefHeight="500.0" prefWidth="700.0">
+            <children>
+                <HBox prefHeight="71.0" prefWidth="600.0">
+                    <children>
+                        <AnchorPane prefHeight="71.0" prefWidth="702.0">
+                            <children>
+                                <Label layoutX="314.0" layoutY="16.0" text="PAGO" textFill="WHITE" AnchorPane.bottomAnchor="23.0">
+                                    <font>
+                                        <Font name="Arial Rounded MT Bold" size="24.0" />
+                                    </font>
+                                </Label>
+                                <ImageView fx:id="menuImagen" fitHeight="40.0" fitWidth="40.0" layoutX="14.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="15.0">
+                                    <image>
+                                        <Image url="@../images/menu.png" />
+                                    </image>
+                                </ImageView>
+                        <Separator layoutY="74.0" prefHeight="0.0" prefWidth="699.0" />
+                            </children>
+                        </AnchorPane>
+                    </children>
+                </HBox>
+                <HBox prefHeight="117.0" prefWidth="600.0">
+                    <children>
+                        <AnchorPane prefHeight="138.0" prefWidth="699.0">
+                            <children>
+                                <Label layoutX="51.0" layoutY="46.0" prefHeight="22.0" prefWidth="229.0" text="TITULAR DE LA TARJETA" textFill="WHITE" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="420.0">
+                                    <font>
+                                        <Font name="Arial Rounded MT Bold" size="18.0" />
+                                    </font>
+                                </Label>
+                                <TextField fx:id="fxNombreTextField" alignment="TOP_CENTER" layoutX="391.0" layoutY="41.0" prefHeight="26.0" prefWidth="212.0" promptText="Jorge Perez Sanchez" style="-fx-border-color: black;" AnchorPane.leftAnchor="391.0" AnchorPane.rightAnchor="96.0" />
+                                <Label layoutX="51.0" layoutY="116.0" prefHeight="22.0" prefWidth="229.0" text="NUMERO DE LA TARJETA" textFill="WHITE" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="420.0">
+                                    <font>
+                                        <Font name="Arial Rounded MT Bold" size="18.0" />
+                                    </font>
+                                </Label>
+                                <TextField fx:id="fxNumeroTextField" alignment="TOP_CENTER" layoutX="391.0" layoutY="112.0" prefHeight="26.0" prefWidth="212.0" promptText="4506 4726 5810 6473" AnchorPane.leftAnchor="391.0" AnchorPane.rightAnchor="96.0" />
+                        <Separator layoutX="294.0" layoutY="56.0" prefHeight="3.0" prefWidth="83.0" AnchorPane.leftAnchor="294.0" />
+                        <Separator layoutX="294.0" layoutY="124.0" prefHeight="3.0" prefWidth="83.0" AnchorPane.leftAnchor="294.0" />
+                            </children>
+                        </AnchorPane>
+                    </children>
+                </HBox>
+                <HBox prefHeight="125.0" prefWidth="700.0">
+                    <children>
+                        <AnchorPane prefHeight="100.0" prefWidth="618.0">
+                            <children>
+                                <Label layoutX="67.0" layoutY="43.0" prefHeight="22.0" prefWidth="212.0" text="FECHA DE CADUCIDAD" textFill="WHITE" AnchorPane.leftAnchor="67.0" AnchorPane.rightAnchor="339.40000000000003">
+                                    <font>
+                                        <Font name="Arial Rounded MT Bold" size="18.0" />
+                                    </font>
+                                </Label>
+                                <TextField fx:id="fxFechaTextField" alignment="TOP_CENTER" layoutX="392.0" layoutY="42.0" promptText="11/24" AnchorPane.leftAnchor="391.0" AnchorPane.rightAnchor="95.0" />
+                                <Label layoutX="233.0" layoutY="110.0" prefHeight="22.0" prefWidth="46.0" text="CVC" textFill="WHITE" AnchorPane.leftAnchor="233.0" AnchorPane.rightAnchor="339.0">
+                                    <font>
+                                        <Font name="Arial Rounded MT Bold" size="18.0" />
+                                    </font>
+                                </Label>
+                                <TextField fx:id="fxCvcTextField" alignment="TOP_CENTER" layoutX="392.0" layoutY="109.0" promptText="632" AnchorPane.leftAnchor="391.0" AnchorPane.rightAnchor="95.0" />
+                        <Separator layoutX="292.0" layoutY="53.0" prefHeight="3.0" prefWidth="83.0" AnchorPane.leftAnchor="294.0" />
+                        <Separator layoutX="292.0" layoutY="119.0" prefHeight="3.0" prefWidth="83.0" AnchorPane.leftAnchor="294.0" />
+                            </children>
+                        </AnchorPane>
+                    </children>
+                </HBox>
+                <HBox prefHeight="0.0" prefWidth="700.0">
+                    <children>
+                        <AnchorPane prefHeight="41.0" prefWidth="700.0" />
+                    </children>
+                </HBox>
+                <HBox prefHeight="100.0" prefWidth="700.0">
+                    <children>
+                        <AnchorPane prefHeight="69.0" prefWidth="700.0">
+                            <children>
+                                <Button fx:id="fxPagarButton" layoutX="318.0" layoutY="86.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="65.0" style="-fx-background-color: white;" text="Pagar" />
+                        <Label layoutX="184.0" layoutY="38.0" text="Total a pagar" textFill="WHITE" AnchorPane.bottomAnchor="60.0">
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="totalPagar" layoutX="310.0" layoutY="38.0" textFill="WHITE" AnchorPane.bottomAnchor="60.0">
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="18.0" />
+                           </font>
+                        </Label>
+                            </children>
+                        </AnchorPane>
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>
