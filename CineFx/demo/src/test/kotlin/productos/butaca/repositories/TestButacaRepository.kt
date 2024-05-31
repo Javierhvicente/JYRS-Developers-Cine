@@ -28,7 +28,6 @@ class TestButacaRepository {
     @Test
     fun findAll() {
         val butaca = butacaRepository.findAll()
-
         assertEquals(0, butaca.size)
     }
 
@@ -57,6 +56,92 @@ class TestButacaRepository {
 
         assertEquals(null, butaca)
     }
+
+    @Test
+    fun findByTipo(){
+        val butaca  = Butaca(
+            id = "A1",
+            tipo = Tipo.NORMAL,
+            estado = Estado.ACTIVA,
+            precio = 5.0,
+            ocupacion = Ocupacion.LIBRE
+        )
+        butacaRepository.save(butaca)
+        val result = butacaRepository.findByTipo(butaca.tipo.toString())
+        assertEquals(1, result.size)
+    }
+
+    @Test
+    fun notFindByTipo(){
+        val butaca  = Butaca(
+            id = "A1",
+            tipo = Tipo.NORMAL,
+            estado = Estado.ACTIVA,
+            precio = 5.0,
+            ocupacion = Ocupacion.LIBRE
+        )
+        butacaRepository.save(butaca)
+        val result = butacaRepository.findByTipo("VIP")
+        assertEquals(0, result.size)
+    }
+
+    @Test
+    fun findByEstado(){
+        val butaca  = Butaca(
+            id = "A1",
+            tipo = Tipo.NORMAL,
+            estado = Estado.ACTIVA,
+            precio = 5.0,
+            ocupacion = Ocupacion.LIBRE
+        )
+        butacaRepository.save(butaca)
+        val result = butacaRepository.findByEstado("ACTIVA")
+        assertEquals(1, result.size)
+    }
+
+    @Test
+    fun notFindByEstado(){
+        val butaca  = Butaca(
+            id = "A1",
+            tipo = Tipo.NORMAL,
+            estado = Estado.ACTIVA,
+            precio = 5.0,
+            ocupacion = Ocupacion.LIBRE
+        )
+        butacaRepository.save(butaca)
+        val result = butacaRepository.findByTipo("OCUPADA")
+        assertEquals(0, result.size)
+    }
+
+    @Test
+    fun findByOcupacion(){
+        val butaca  = Butaca(
+            id = "A1",
+            tipo = Tipo.NORMAL,
+            estado = Estado.ACTIVA,
+            precio = 5.0,
+            ocupacion = Ocupacion.LIBRE
+        )
+        butacaRepository.save(butaca)
+        val result = butacaRepository.findByOcupacion("LIBRE")
+        assertEquals(1, result.size)
+    }
+
+    @Test
+    fun notFindByOcupacion(){
+        val butaca  = Butaca(
+            id = "A1",
+            tipo = Tipo.NORMAL,
+            estado = Estado.ACTIVA,
+            precio = 5.0,
+            ocupacion = Ocupacion.LIBRE
+        )
+        butacaRepository.save(butaca)
+        val result = butacaRepository.findByOcupacion("OCUPADA")
+        assertEquals(0, result.size)
+    }
+
+
 
     @Test
     fun save() {
@@ -121,6 +206,8 @@ class TestButacaRepository {
     @Test
     fun deleteAll(){
         val result = butacaRepository.deleteAll()
-        assertEquals(0, result.)
+        val operation = butacaRepository.findAll()
+        assertEquals(Unit, result)
+        assertEquals(0, operation.size)
     }
 }

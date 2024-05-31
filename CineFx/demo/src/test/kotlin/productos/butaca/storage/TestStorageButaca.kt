@@ -26,21 +26,33 @@ class TestStorageButaca {
     @InjectMocks
     private lateinit var storage: ButacaStorageImpl
     private lateinit var myFile: File
+    private lateinit var myFileJson: File
     @BeforeEach
     fun setUp(){
         myFile = Files.createTempFile("butacas", ".csv").toFile()
+        myFileJson = Files.createTempFile("prueba", ".json").toFile()
     }
     @AfterEach
     fun tearDown(){
         Files.deleteIfExists(myFile.toPath())
+        Files.deleteIfExists(myFileJson.toPath())
     }
 
     @Test
     fun storageJson(){
         val butacas= listOf(Butaca("A1", Estado.ACTIVA, Tipo.NORMAL, ocupacion =  Ocupacion.LIBRE, precio = 5.0))
-        val result = storage.saveJson(myFile, butacas)
+        val result = storage.saveJson(myFileJson, butacas)
         assertTrue(result.isOk)
-        assertEquals(result.value, butacas.size.toLong())
+        assertEquals(butacas.size.toLong(), result.value)
+    }
+
+    @Test
+    fun loadJson(){
+        val butacas = listOf(Butaca("A1", Estado.ACTIVA, Tipo.NORMAL, ocupacion =  Ocupacion.LIBRE, precio = 5.0))
+        storage.saveJson(myFileJson, butacas)
+        val result = storage.loadJson(myFileJson)
+        assertTrue(result.isOk)
+        assertEquals(butacas.size, result.value.size)
     }
 
     @Test

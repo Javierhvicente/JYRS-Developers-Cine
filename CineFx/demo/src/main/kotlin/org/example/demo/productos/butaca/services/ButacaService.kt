@@ -17,8 +17,8 @@ interface ButacaService {
     fun update(id: String, butaca: Butaca): Result<Butaca, ButacaError>
     fun deleteAll()
     fun importCsv(csvFile: File): Result<List<Butaca>, ButacaError>
-    fun exportCsv(file:File, list: List<Butaca>): Result<Unit, ButacaError>
-    fun exportJson(file:File, list: List<Butaca>): Result<Unit, ButacaError>
+    fun exportCsv(file:File, list: List<Butaca>): Result<Long, ButacaError>
+    fun exportJson(file:File, list: List<Butaca>): Result<Long, ButacaError>
     fun importJson(jsonFile: File): Result<List<Butaca>, ButacaError>
 
 }

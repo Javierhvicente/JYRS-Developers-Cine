@@ -46,31 +46,16 @@ class CineStorageImpl  (
         complementos: List<Complemento>,
         usuarios: List<Usuario>,
         ventas: List<Venta>
-    ): Result<File, ErrorStorage> { //dataVentas: List<Venta>
+    ): Result<File, ErrorStorage> {
         logger.debug { "Exportando a ZIPp $file" }
         val tempDir = Files.createTempDirectory(dirName)
         return try {
             val dir=Files.createDirectories(Path( config.imagenesDirectory))
             Files.walk(dir).forEach {
                 if (Files.isRegularFile(it)) {
-                    //storageImages.saveImage(it.toFile())
                     storageImages.saveImageTemp(tempDir.pathString,it.toFile())
                 }
             }
-            /*
-            complementos.forEach {
-                logger.debug { "Exportando imagenes a ZIP $file" }
-                val filee = storageImages.loadImage(it.imagen).value
-                if (filee.exists()) {
-                    logger.debug { "guardando imagenes a ZIP ${filee.name}" }
-                    storageImages.saveImageTemp(tempDir.pathString,filee)
-                }else{
-                    logger.error { "imagen no existente ${filee.name}" }
-                }
-
-            }
-
-             */
             logger.debug { "guardando butacas " }
             storageButacas.saveJson(File("$tempDir","butacas.json"), butacas)
             Files.walk(tempDir).forEach { logger.debug { it } }
@@ -173,6 +158,5 @@ class CineStorageImpl  (
             Err(ErrorStorage.FicheroError("Error al importar desde ZIP: ${e.message}"))
         }
     }
-
 
 }

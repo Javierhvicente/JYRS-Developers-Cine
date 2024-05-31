@@ -10,7 +10,7 @@ import java.io.InputStream
 
 interface ComplementoStorage {
     fun loadCsv(file: File): Result<List<Complemento>, ComplementoError>
-    fun saveJson(file: File, list: List<Complemento>): Result<Unit, ComplementoError>
+    fun saveJson(file: File, list: List<Complemento>): Result<Long, ComplementoError>
     fun loadJson(file: File): Result<List<Complemento>, ComplementoError>
-    fun saveCsv(file: File, list: List<Complemento>): Result<Unit, ComplementoError>
+    fun saveCsv(file: File, list: List<Complemento>): Result<Long, ComplementoError>
 }

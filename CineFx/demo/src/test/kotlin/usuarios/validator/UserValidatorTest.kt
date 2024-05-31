@@ -15,7 +15,7 @@ class UserValidatorTest {
 
     @Test
     fun validarAllCorrecto() {
-        val user = Cliente(2,"Juan", "Perez", "Abcdef1234$%", "adminJYRS@JYRS.es")
+        val user = Cliente(2,"Juan", "Perez", "A1bcde", "adminJYRS@JYRS.es")
         val result = validateUser(user).isOk
         assertTrue(result)
     }
@@ -24,7 +24,7 @@ class UserValidatorTest {
     @Test
     @DisplayName("Validación del nombre del usuario debería devolver un error de validación")
     fun validarNombre() {
-        val user = Cliente(2,"", "Perez", "Abcdef1234$%", "adminJYRS@JYRS.es")
+        val user = Cliente(2,"", "Perez", "A1bcde", "adminJYRS@JYRS.es")
         val result = validateUser(user).error
         assertTrue(result is UserError.ValidateProblem)
         assertEquals( "El nombre no puede estar vacío", result.message)
@@ -33,7 +33,7 @@ class UserValidatorTest {
     @Test
     @DisplayName("Validación del apellido del usuario debería devolver un error de validación")
     fun validarApellido() {
-        val user = Cliente(2,"Juan", "", "Abcdef1234$%", "adminJYRS@JYRS.es")
+        val user = Cliente(2,"Juan", "", "A1bcde", "adminJYRS@JYRS.es")
         val result = validateUser(user).error
         assertTrue(result is UserError.ValidateProblem)
         assertEquals( "Los apellidos no pueden estar vacios", result.message)
@@ -42,7 +42,7 @@ class UserValidatorTest {
     @Test
     @DisplayName("Validación del email que no contenga arroba debería devolver error de validación")
     fun validarEmailNoContieneArroba() {
-        val user = Cliente(2,"Juan", "Perez", "Abcdef1234$%", "adminJYRSJYRS.es")
+        val user = Cliente(2,"Juan", "Perez", "A1bcde", "adminJYRSJYRS.es")
         val result = validateUser(user).error
         assertTrue(result is UserError.ValidateProblem)
         assertEquals( "El correo electrónico no es correcto", result.message,)
@@ -51,7 +51,7 @@ class UserValidatorTest {
     @Test
     @DisplayName("Validación del email que esté vacío debería devolver error de validación")
     fun validarEmailVacio() {
-        val user = Cliente(2,"Juan", "Perez", "Abcdef1234$%", "")
+        val user = Cliente(2,"Juan", "Perez", "A1bcde", "")
         val result = validateUser(user).error
         assertTrue(result is UserError.ValidateProblem)
         assertEquals("El correo electrónico no es correcto", result.message)
@@ -60,7 +60,7 @@ class UserValidatorTest {
     @Test
     @DisplayName("Validación del email que no contenga punto debería devolver error de validación")
     fun validarEmailNoContienePunto() {
-        val user = Cliente(2,"Juan", "Perez", "Abcdef1234$%", "adminJYRS@JYRSes")
+        val user = Cliente(2,"Juan", "Perez", "A1bcde", "adminJYRS@JYRSes")
         val result = validateUser(user).error
         assertTrue(result is UserError.ValidateProblem)
         assertEquals("El correo electrónico no es correcto", result.message)
@@ -69,7 +69,7 @@ class UserValidatorTest {
     @Test
     @DisplayName("Validación del email que no contiene más de dos letras después del punto debería devolver error de validación")
     fun validarEmailNoSuperiorADosLetras() {
-        val user = Cliente(2,"Juan", "Perez", "Abcdef1234$%", "adminJYRS@JYRS.e")
+        val user = Cliente(2,"Juan", "Perez", "A1bcde", "adminJYRS@JYRS.e")
         val result = validateUser(user).error
         assertTrue(result is UserError.ValidateProblem)
         assertEquals("El correo electrónico no es correcto", result.message)
@@ -78,7 +78,7 @@ class UserValidatorTest {
     @Test
     @DisplayName("Validación de email que contiene tres letras después del punto, deberia de devolver Ok")
     fun validarEmailTresLetrasDespuesPunto(){
-        val user = Cliente(2,"Juan", "Perez", "Abcdef1234$%", "adminJYRS@JYRS.com")
+        val user = Cliente(2,"Juan", "Perez", "A1bcde", "adminJYRS@JYRS.com")
         val result = validateUser(user).isOk
         assertTrue(result)
     }
@@ -86,7 +86,7 @@ class UserValidatorTest {
     @Test
     @DisplayName("Validación del email que contiene más de tres letras después del punto debería devolver error de validación")
     fun validarEmailSuperiorATresLetras() {
-        val user = Cliente(2,"Juan", "Perez", "Abcdef1234$%", "adminJYRS@JYRS.come")
+        val user = Cliente(2,"Juan", "Perez", "A1bcde", "adminJYRS@JYRS.come")
         val result = validateUser(user).error
         assertTrue(result is UserError.ValidateProblem)
         assertEquals("El correo electrónico no es correcto", result.message)
@@ -98,52 +98,44 @@ class UserValidatorTest {
         val user = Cliente(2,"Juan", "Perez", "", "adminJYRS@JYRS.es")
         val result = validateUser(user).error
         assertTrue(result is UserError.ValidateProblem)
-        assertEquals("La contraseña no es válida, debe tener 12 carácteres, contener al menos una mayúscula y una minúsucla, un número y un caracter especial", result.message)
+        assertEquals("La contraseña no es válida, debe tener 6 carácteres, contener al menos una mayúscula y un número", result.message)
     }
 
     @Test
     @DisplayName("Validación de la contraseña sin una mayúscula debería devolver error de validación")
     fun validarContrasenaSinMayuscula() {
-        val user = Cliente(2,"Juan", "Perez", "abcdef1234$%", "adminJYRS@JYRS.es")
+        val user = Cliente(2,"Juan", "Perez", "a1bcde", "adminJYRS@JYRS.es")
         val result = validateUser(user).error
         assertTrue(result is UserError.ValidateProblem)
-        assertEquals("La contraseña no es válida, debe tener 12 carácteres, contener al menos una mayúscula y una minúsucla, un número y un caracter especial", result.message)
+        assertEquals("La contraseña no es válida, debe tener 6 carácteres, contener al menos una mayúscula y un número", result.message)
     }
 
     @Test
     @DisplayName("Validación de la contraseña sin una minúscula debería devolver error de validación")
     fun validarContrasenaSinMinuscula() {
-        val user = Cliente(2,"Juan", "Perez", "ABCDEF1234$%", "adminJYRS@JYRS.es")
+        val user = Cliente(2,"Juan", "Perez", "a1bcde", "adminJYRS@JYRS.es")
         val result = validateUser(user).error
         assertTrue(result is UserError.ValidateProblem)
-        assertEquals("La contraseña no es válida, debe tener 12 carácteres, contener al menos una mayúscula y una minúsucla, un número y un caracter especial", result.message)
+        assertEquals("La contraseña no es válida, debe tener 6 carácteres, contener al menos una mayúscula y un número", result.message)
     }
 
-    @Test
-    @DisplayName("Validación de la contraseña sin carácter debería devolver error de validación")
-    fun validarContrasenaSinCaracter() {
-        val user = Cliente(2,"Juan", "Perez", "Abcdef12343", "adminJYRS@JYRS.es")
-        val result = validateUser(user).error
-        assertTrue(result is UserError.ValidateProblem)
-        assertEquals("La contraseña no es válida, debe tener 12 carácteres, contener al menos una mayúscula y una minúsucla, un número y un caracter especial", result.message)
-    }
 
     @Test
-    @DisplayName("Validación de la contraseña menor de 12 caracteres debería devolver error de validación")
+    @DisplayName("Validación de la contraseña menor de 6 caracteres debería devolver error de validación")
     fun validarContrasenaMenor12() {
-        val user = Cliente(2,"Juan", "Perez", "x2*3&&7", "adminJYRS@JYRS.es")
+        val user = Cliente(2,"Juan", "Perez", "A1bcd", "adminJYRS@JYRS.es")
         val result = validateUser(user).error
         assertTrue(result is UserError.ValidateProblem)
-        assertEquals("La contraseña no es válida, debe tener 12 carácteres, contener al menos una mayúscula y una minúsucla, un número y un caracter especial", result.message)
+        assertEquals("La contraseña no es válida, debe tener 6 carácteres, contener al menos una mayúscula y un número", result.message)
     }
 
     @Test
-    @DisplayName("Validación de la contraseña mayor de 12 caracteres debería devolver error de validación")
+    @DisplayName("Validación de la contraseña mayor de 6 caracteres debería devolver error de validación")
     fun validarContrasenaMayor12() {
         val user = Cliente(2,"Juan", "Perez", "SnlScyowuduUGDHQU9iobfqh9==", "adminJYRS@JYRS.es")
         val result = validateUser(user).error
         assertTrue(result is UserError.ValidateProblem)
-        assertEquals("La contraseña no es válida, debe tener 12 carácteres, contener al menos una mayúscula y una minúsucla, un número y un caracter especial", result.message)
+        assertEquals("La contraseña no es válida, debe tener 6 carácteres, contener al menos una mayúscula y un número", result.message)
     }
 
     @Test
@@ -152,6 +144,6 @@ class UserValidatorTest {
         val user = Cliente(2,"Juan", "Perez", "AbcdefeeeE$%", "adminJYRS@JYRS.es")
         val result = validateUser(user).error
         assertTrue(result is UserError.ValidateProblem)
-        assertEquals("La contraseña no es válida, debe tener 12 carácteres, contener al menos una mayúscula y una minúsucla, un número y un caracter especial", result.message)
+        assertEquals("La contraseña no es válida, debe tener 6 carácteres, contener al menos una mayúscula y un número", result.message)
     }
 }

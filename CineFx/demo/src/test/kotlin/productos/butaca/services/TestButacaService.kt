@@ -19,8 +19,7 @@ import org.junit.jupiter.api.extension.ExtendWith
 import org.mockito.InjectMocks
 import org.mockito.Mock
 import org.mockito.Mockito
-import org.mockito.Mockito.times
-import org.mockito.Mockito.verify
+import org.mockito.Mockito.*
 import org.mockito.junit.jupiter.MockitoExtension
 import org.mockito.kotlin.whenever
 import java.io.File
@@ -87,6 +86,37 @@ class TestButacaService {
     }
 
     @Test
+    fun getByTipo(){
+        val butaca = Butaca("A1", Estado.ACTIVA, Tipo.NORMAL, ocupacion =  Ocupacion.LIBRE, precio = 5.0)
+        val butacaList = listOf(butaca)
+        whenever(mockButacaRepository.findByTipo(butaca.tipo.toString())).thenReturn(butacaList)
+        val result = service.getByTipo(butaca.tipo.toString())
+        assertTrue(result.isOk)
+        verify(mockButacaRepository, times(1)).findByTipo(butaca.tipo.toString())
+    }
+
+    @Test
+    fun getByEstado(){
+        val butaca = Butaca("A1", Estado.ACTIVA, Tipo.NORMAL, ocupacion =  Ocupacion.LIBRE, precio = 5.0)
+        val butacaList = listOf(butaca)
+        whenever(mockButacaRepository.findByEstado(butaca.estado.toString())).thenReturn(butacaList)
+        val result = service.getByEstado(butaca.estado.toString())
+        assertTrue(result.isOk)
+        verify(mockButacaRepository, times(1)).findByEstado(butaca.estado.toString())
+    }
+
+    @Test
+    fun getByOcupacion(){
+        val butaca = Butaca("A1", Estado.ACTIVA, Tipo.NORMAL, ocupacion =  Ocupacion.LIBRE, precio = 5.0)
+        val butacaList = listOf(butaca)
+        whenever(mockButacaRepository.findByOcupacion(butaca.ocupacion.toString())).thenReturn(butacaList)
+        val result = service.getByOcupacion(butaca.ocupacion.toString())
+        assertTrue(result.isOk)
+        verify(mockButacaRepository, times(1)).findByOcupacion(butaca.ocupacion.toString())
+    }
+
+
+    @Test
     fun saveButaca() {
         val butaca = Butaca("A3", Estado.ACTIVA, Tipo.NORMAL, ocupacion =  Ocupacion.LIBRE, precio = 5.0)
         Mockito.`when`(mockButacaValidator.validarButaca(butaca)).thenReturn(Ok(butaca))
@@ -139,17 +169,62 @@ class TestButacaService {
     }
 
     @Test
-    fun export(){
+    fun exportCsv(){
+        val lista = listOf(Butaca("A1", Estado.ACTIVA, Tipo.NORMAL, ocupacion =  Ocupacion.LIBRE, precio = 5.0))
+        val myFile = File("data", "butacas.csv")
+
+       whenever(storage.saveCsv(myFile, lista)).thenReturn(Ok(lista.size.toLong()))
+
+        val result = service.exportCsv(myFile, lista)
+
+        assertTrue(result.isOk)
+        assertEquals(lista.size.toLong(), result.value)
+
+        verify(storage, times(1)).saveCsv(myFile, lista)
+    }
+
+    @Test
+    fun importCsv(){
         val lista = listOf(Butaca("A1", Estado.ACTIVA, Tipo.NORMAL, ocupacion =  Ocupacion.LIBRE, precio = 5.0))
         val myFile = File("data", "butacas.csv")
 
         whenever(storage.loadCsv(myFile)).thenReturn(Ok(lista))
 
-        val result = storage.loadCsv(myFile)
+        val result = service.importCsv(myFile)
 
         assertTrue(result.isOk)
         assertEquals(result.value.size,lista.size)
 
         verify(storage, times(1)).loadCsv(myFile)
+    }
+
+    @Test
+    fun exportJson(){
+        val lista = listOf(Butaca("A1", Estado.ACTIVA, Tipo.NORMAL, ocupacion =  Ocupacion.LIBRE, precio = 5.0))
+        val myFile = File("data", "butacas.json")
+
+       whenever(storage.saveJson(myFile, lista)).thenReturn(Ok(lista.size.toLong()))
+
+        val result = service.exportJson(myFile, lista)
+
+        assertTrue(result.isOk)
+        assertEquals(lista.size.toLong(), result.value)
+
+        verify(storage, times(1)).saveJson(myFile, lista)
+    }
+
+    @Test
+    fun importJson(){
+        val lista = listOf(Butaca("A1", Estado.ACTIVA, Tipo.NORMAL, ocupacion =  Ocupacion.LIBRE, precio = 5.0))
+        val myFile = File("data", "butacas.json")
+
+        whenever(storage.loadJson(myFile)).thenReturn(Ok(lista))
+
+        val result = service.importJson(myFile)
+
+        assertTrue(result.isOk)
+        assertEquals(lista.size, result.value.size)
+
+        verify(storage, times(1)).loadJson(myFile)
     }
 }

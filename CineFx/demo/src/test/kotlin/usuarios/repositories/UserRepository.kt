@@ -7,6 +7,7 @@ import org.example.demo.locale.encodeToBase64
 import org.example.demo.usuarios.models.Cliente
 import org.example.demo.usuarios.repositories.UserRepositoryImpl
 import org.junit.jupiter.api.AfterAll
+import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
@@ -39,11 +40,25 @@ class UserRepositoryTest {
         dbManager = SqlDelightManager(Config)
         databaseQueries = dbManager.databaseQueries
         userRepository = UserRepositoryImpl(dbManager)
+        dbManager.databaseQueries.deleteAllClientes()
     }
+
+    @AfterEach
+    fun tearDown(){
+        dbManager.databaseQueries.deleteAllClientes()
+    }
+
+
 
     @Test
     fun findAll(){
-        val cliente = Cliente(1, "NombreTest1", "ApellidoTest1", "P@ssw0rd!2021", "ejemplo1@gmail.com")
+        val cliente = Cliente(
+            id = 2,
+            nombre = "NombreTest1",
+            apellidos = "ApellidoTest1",
+            contraseña = "P@ssw0rd!2021",
+            email = "ejemplo.usuario1@example.com"
+        )
         userRepository.save(cliente)
         val result = userRepository.getAllClientes()
         assertEquals(1, result.size)

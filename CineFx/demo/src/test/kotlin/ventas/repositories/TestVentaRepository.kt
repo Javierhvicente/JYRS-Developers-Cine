@@ -3,16 +3,13 @@ package ventas.repositories
 import org.example.demo.config.Config
 import org.example.demo.database.SqlDelightManager
 import org.example.demo.locale.toShortSpanishFormat
-import org.example.demo.productos.butaca.repositories.ButacaRepository
 import org.example.demo.productos.butaca.repositories.ButacaRepositoryImpl
-import org.example.demo.productos.complementos.repositories.ComplementoRepository
 import org.example.demo.productos.complementos.repositories.ComplementoRepositoryImpl
 import org.example.demo.productos.models.*
 import org.example.demo.usuarios.models.Cliente
 import org.example.demo.usuarios.repositories.UserRepositoryImpl
 import org.example.demo.venta.models.LineaVenta
 import org.example.demo.venta.models.Venta
-import org.example.demo.venta.repositories.VentasRepository
 import org.example.demo.venta.repositories.VentasRepositoryImpl
 import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.Assertions.assertEquals
@@ -29,19 +26,20 @@ import java.util.*
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @ExtendWith(MockitoExtension::class)
 class TestVentaRepository {
+    @Mock
     private lateinit var dbManager: SqlDelightManager
 
-    @InjectMocks
-    private lateinit var ventaRepo: VentasRepository
+    @Mock
+    private lateinit var butacaRepo: ButacaRepositoryImpl
 
     @Mock
-    private lateinit var butacaRepo: ButacaRepository
-
-    @Mock
-    private lateinit var complementoRepo: ComplementoRepository
+    private lateinit var complementoRepo: ComplementoRepositoryImpl
 
     @Mock
     private lateinit var clienteRepo: UserRepositoryImpl
+
+    @InjectMocks
+    private lateinit var ventaRepo: VentasRepositoryImpl
 
     private lateinit var cliente: Cliente
     private lateinit var complemento: Complemento
@@ -60,7 +58,7 @@ class TestVentaRepository {
         ventaRepo = VentasRepositoryImpl(dbManager, clienteRepo, butacaRepo, complementoRepo)
 
         cliente = Cliente(
-            id = 55,
+            id = 2,
             nombre="User",
             apellidos = "user",
             email = "user@gmail.com",
@@ -73,7 +71,7 @@ class TestVentaRepository {
             imagen = "agua.png",
             precio = 2.0
         )
-        dbManager.databaseQueries.insertComplemento("BEBIDA",complemento.id, precio = 2.0.toLong(), imagen = "agua.png", nombre = "AGUA"
+        dbManager.databaseQueries.insertComplemento("BEBIDA",complemento.id, precio = 2.0, imagen = "agua.png", nombre = "AGUA"
         )
         butaca = Butaca(
             id="A1",
@@ -102,17 +100,17 @@ class TestVentaRepository {
 
     @AfterEach
     fun deletData(){
-        dbManager.clearData()
+        dbManager.databaseQueries.removeAllVentas()
     }
 
     @Test
-    fun findAll(){
+    fun getAll(){
         ventaRepo.save(Venta(
             cliente = cliente, lineas = listOf(lineaVenta1,lineaVenta2,lineaVenta3)
         ))
         val ventas=ventaRepo.getAll()
 
-        assertEquals(1,ventas.size)
+        assertEquals(3,ventas.size)
     }
 
     @Test
@@ -180,12 +178,13 @@ class TestVentaRepository {
 
     @Test
     fun findById() {
-        ventaRepo.save(Venta(id = UUID.fromString("a14b8b77-91d2-4ed4-8c2e-9b0f7c2a6f52"),cliente, lineas = listOf(lineaVenta3)))
-        val venta=ventaRepo.getById(
+        val venta = Venta(id = UUID.fromString("a14b8b77-91d2-4ed4-8c2e-9b0f7c2a6f52"),cliente, lineas = listOf(lineaVenta3))
+        ventaRepo.save(venta)
+        val result=ventaRepo.getById(
             UUID.fromString("a14b8b77-91d2-4ed4-8c2e-9b0f7c2a6f52")
         )
 
-        assertEquals("a14b8b77-91d2-4ed4-8c2e-9b0f7c2a6f52", venta?.id.toString())
+        assertEquals("a14b8b77-91d2-4ed4-8c2e-9b0f7c2a6f52", result?.id.toString())
     }
 
     @Test

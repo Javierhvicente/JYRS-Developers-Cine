@@ -5,6 +5,9 @@ import com.github.michaelbull.result.Ok
 import com.github.michaelbull.result.Result
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
+import org.example.demo.productos.butaca.dto.ButacaDto
+import org.example.demo.productos.butaca.mappers.toButaca
+import org.example.demo.productos.butaca.mappers.toButacaDto
 import org.example.demo.productos.complementos.dto.ComplementoDto
 import org.example.demo.productos.complementos.errors.ComplementoError
 import org.example.demo.productos.complementos.mappers.toComplemento
@@ -54,14 +57,16 @@ class ComplementoStorageImpl:ComplementoStorage {
      * @since 1.0
      */
 
-    override fun saveJson(file: File, list: List<Complemento>): Result<Unit, ComplementoError> {
+    override fun saveJson(file: File, list: List<Complemento>): Result<Long, ComplementoError> {
         logger.debug { "Guardando complementos en fichero json" }
         return try {
             val json = Json {
                 prettyPrint = true
                 ignoreUnknownKeys = true
             }
-            Ok(file.writeText(json.encodeToString<List<ComplementoDto>>(list.map { it.toComplementoDto() })))
+            val jsonString = json.encodeToString<List<ComplementoDto>>(list.map { it.toComplementoDto() })
+            file.writeText(jsonString)
+            Ok(list.size.toLong())
         }catch (e: Exception){
             logger.error { "Error al guardar el fichero json de complementos" }
             Err(ComplementoError.FicheroNoValido("Error al leer el JSON: ${e.message}"))
@@ -78,12 +83,14 @@ class ComplementoStorageImpl:ComplementoStorage {
 
     override fun loadJson(file: File): Result<List<Complemento>, ComplementoError> {
         logger.debug { "Leyendo Complementos desde fichero json $file" }
+        val json = Json{
+            prettyPrint = true
+            ignoreUnknownKeys = true
+        }
         return try {
-            val json = Json{
-                prettyPrint = true
-                ignoreUnknownKeys = true
-            }
-            Ok(json.decodeFromString<List<ComplementoDto>>(file.readText()).map { it.toComplemento() })
+            val jsonString = file.readText()
+            val data = json.decodeFromString<List<ComplementoDto>>(jsonString)
+            Ok(data.map { it.toComplemento() })
         }catch (e: Exception) {
             Err(ComplementoError.FicheroNoValido("Error al leer el JSON: ${e.message}"))
         }
@@ -97,15 +104,14 @@ class ComplementoStorageImpl:ComplementoStorage {
      * @author Raúl Fernández, Javier Hernández, Yahya El Hadri, Samuel Cortés
      * @since 1.0
      */
-
-    override fun saveCsv(file: File, list: List<Complemento>): Result<Unit, ComplementoError> {
+    override fun saveCsv(file: File, list: List<Complemento>): Result<Long, ComplementoError> {
         return try {
                 file.writeText("tipo_complemento,nombre,precio,imagen\n")
                 list.map { it.toComplementoDto() }
                     .forEach { complemento ->
                     file.appendText("${complemento.tipoComplemento},${complemento.nombre},${complemento.precio},${complemento.imagen}\n")
                 }
-            Ok(Unit)
+            Ok(list.size.toLong())
         } catch (e: Exception) {
             Err(ComplementoError.FicheroNoValido("Error al escribir el fichero csv"))
         }
