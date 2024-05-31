@@ -8,16 +8,16 @@ import javafx.scene.control.TextField
 import javafx.scene.image.ImageView
 import javafx.stage.FileChooser
 import org.example.demo.routes.RoutesManager
-import org.example.demo.view.viewModel.GestionComplementoViewModel
-import org.example.demo.view.viewModel.NewComplementoViewModel
+import org.example.demo.usuarios.viewModel.GestionComplementoViewModel
+import org.example.demo.usuarios.viewModel.NewComplementoViewModel
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 import org.lighthousegames.logging.logging
 
 private val logger= logging()
 class NewComplementoViewController: KoinComponent {
-    val view:NewComplementoViewModel by inject()
-    val viewGest:GestionComplementoViewModel by inject()
+    val view: NewComplementoViewModel by inject()
+    val viewGest: GestionComplementoViewModel by inject()
 
     
     @FXML

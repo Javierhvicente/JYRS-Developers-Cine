@@ -1,4 +1,4 @@
-package org.example.demo.view.viewModel
+package org.example.demo.usuarios.viewModel
 
 import com.github.michaelbull.result.onSuccess
 import org.example.demo.usuarios.services.UserService

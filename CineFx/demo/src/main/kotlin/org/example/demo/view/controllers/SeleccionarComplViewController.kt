@@ -1,14 +1,16 @@
 package org.example.demo.view.controllers
 
+import javafx.beans.property.SimpleStringProperty
 import javafx.collections.FXCollections
 import javafx.fxml.FXML
 import javafx.scene.control.*
 import javafx.scene.control.cell.PropertyValueFactory
 import javafx.scene.image.ImageView
+import org.example.demo.locale.toDefaultMoneyString
 import org.example.demo.productos.models.*
 import org.example.demo.routes.RoutesManager
-import org.example.demo.view.viewModel.SeleccionarAsientoViewModel
-import org.example.demo.view.viewModel.SeleccionarComplViewModel
+import org.example.demo.usuarios.viewModel.SeleccionarAsientoViewModel
+import org.example.demo.usuarios.viewModel.SeleccionarComplViewModel
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 import org.lighthousegames.logging.logging
@@ -17,7 +19,7 @@ import org.lighthousegames.logging.logging
 private val logger = logging()
 class SeleccionarComplViewController :KoinComponent{
 
-    val viewCompl:SeleccionarComplViewModel by inject()
+    val viewCompl: SeleccionarComplViewModel by inject()
 
     @FXML
     lateinit var tipoTextfield: TextField
@@ -25,8 +27,6 @@ class SeleccionarComplViewController :KoinComponent{
     lateinit var nombreTextfield: TextField
     @FXML
     lateinit var precioTextfield: TextField
-    @FXML
-    lateinit var cantidadSpinner: Spinner<Int>
     @FXML
     lateinit var añadirComplementoButton:Button
     @FXML
@@ -65,6 +65,10 @@ class SeleccionarComplViewController :KoinComponent{
         nombreColumna.cellValueFactory = PropertyValueFactory("id")
         precioColumna.cellValueFactory = PropertyValueFactory("precio")
 
+        precioColumna.setCellValueFactory {
+            SimpleStringProperty(it.value.precio.toDefaultMoneyString())
+        }
+
         filtroPrecio.items = FXCollections.observableList(viewCompl.state.value.precios)
         filtroPrecio.value ="All"
     }
@@ -93,22 +97,22 @@ class SeleccionarComplViewController :KoinComponent{
             it?.let { onTextAction() }
         }
         añadirComplementoButton.setOnAction { añadirOnAction(complemennto) }
-        eliminarComplementoBoton.setOnAction { eliminarOnAction(complemennto!!) }
+        eliminarComplementoBoton.setOnAction { eliminarOnAction(complemennto) }
         
     }
 
-    private fun eliminarOnAction(complemento: Complemento) {
-        if (this.complemennto != null){
+    private fun eliminarOnAction(complemento: Complemento?) {
+        if (complemento != null){
             if (complemento.id != "NOVALIDO" && viewCompl.state.value.complementosSeleccionados.contains(complemento)){
                 complemmentosSeleccionas.remove(complemento)
                 println(complemmentosSeleccionas.size)
                 viewCompl.actualizarSeleccionados(complemmentosSeleccionas)
-                RoutesManager.alerta("Complemento Eliminado","El Complemento a sido eliminado con exito",Alert.AlertType.CONFIRMATION)
+                RoutesManager.alerta("Complemento Eliminado","El Complemento a sido eliminado con éxito",Alert.AlertType.CONFIRMATION)
             }else{
                 RoutesManager.alerta("Eliminar Complemento","El complemento seleccionado no esta en tu carrito")
             }
         }else{
-            RoutesManager.alerta("Complemento Seleccionado","No has seleccionado ningun complemento")
+            RoutesManager.alerta("Complemento Seleccionado","No has seleccionado ningún complemento")
         }
     }
 
@@ -123,10 +127,10 @@ class SeleccionarComplViewController :KoinComponent{
                 println(complemmentosSeleccionas.size)
                 viewCompl.actualizarSeleccionados(complemmentosSeleccionas)
             }else{
-                RoutesManager.alerta("Maximo 3 Complmenetos","El maximo de complemmentos que puedes seleccionar son 3")
+                RoutesManager.alerta("Máximo 3 Complementos","El máximo de complementos que puedes seleccionar son 3")
             }
         }else{
-            RoutesManager.alerta("Complemento Seleccionado","No has seleccionado ningun complemento")
+            RoutesManager.alerta("Complemento Seleccionado","No has seleccionado ningún complemento")
         }
 
 

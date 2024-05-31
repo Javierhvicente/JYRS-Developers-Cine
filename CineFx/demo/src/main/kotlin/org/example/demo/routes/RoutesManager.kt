@@ -44,7 +44,7 @@ object RoutesManager {
         GESTIONCOMPL("views/gestion-compl.fxml"),
         ACERCA_DE("views/acerca-de.fxml"),
         ACTUALIZARCOMPL("views/actualizar-compl.fxml"),
-        NEWCOMPL("views/nuevoCompl.fxml"),
+        NEWCOMPL("views/nuevoComplemento.fxml"),
         GESTIONBUTACA("views/gestionButaca.fxml"),
         MODBUTACA("views/modButaca.fxml"),
         ESTADOCINE("views/estadoCine.fxml")

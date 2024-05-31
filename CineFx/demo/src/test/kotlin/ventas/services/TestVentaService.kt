@@ -58,7 +58,9 @@ class TestVentaService {
                     id = UUID.fromString("d41a3b56-2a8e-49fa-9f1e-7f0b8b4e3f72"),
                     producto = Bebida(
                         id="AGUA",
-                        nombre = CategoriaBebida.AGUA,
+                        tipo = CategoriaBebida.AGUA.toString(),
+                        imagen = "agua.png",
+                        precio = 2.0
                     ),
                     cantidad = 1,
                     precio =  5.0
@@ -105,7 +107,9 @@ class TestVentaService {
                     id = UUID.fromString("c2a1f6d9-7b4e-41d8-9e1b-0f8a3b5d6e7c"),
                     producto = Bebida(
                         id="AGUA",
-                        nombre = CategoriaBebida.AGUA,
+                        tipo = CategoriaBebida.AGUA.toString(),
+                        imagen = "agua.png",
+                        precio = 2.0
                     ),
                     cantidad = 1,
                     precio =  5.0

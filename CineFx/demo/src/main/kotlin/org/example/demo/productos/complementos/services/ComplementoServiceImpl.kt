@@ -90,7 +90,6 @@ class ComplementoServiceImpl(
      * @since 1.0
      */
 
-
     override fun update(id: String, complemento: Complemento,imagen:String): Result<Complemento, ComplementoError> {
         logger.debug { "Actualizando complemento con id: $id" }
         return  repository.update(complemento.id, complemento, imagen)

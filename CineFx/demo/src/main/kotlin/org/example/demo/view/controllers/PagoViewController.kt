@@ -6,7 +6,7 @@ import javafx.scene.control.Label
 import javafx.scene.control.TextField
 import javafx.scene.image.ImageView
 import org.example.demo.routes.RoutesManager
-import org.example.demo.view.viewModel.*
+import org.example.demo.usuarios.viewModel.*
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 import org.lighthousegames.logging.logging
@@ -14,11 +14,11 @@ import org.lighthousegames.logging.logging
 private val logger= logging()
 class PagoViewController:KoinComponent {
 
-    val viewButacas:SeleccionarAsientoViewModel by inject()
-    val viewBCompl:SeleccionarComplViewModel by inject()
+    val viewButacas: SeleccionarAsientoViewModel by inject()
+    val viewBCompl: SeleccionarComplViewModel by inject()
     val viewCarrito : CarritoViewModel by inject()
     val viewLogin : LoginViewModel by inject()
-    val view :PagoViewModel by inject()
+    val view : PagoViewModel by inject()
 
     @FXML
     lateinit var menuImagen: ImageView
@@ -44,7 +44,7 @@ class PagoViewController:KoinComponent {
 
     private fun initDefaultValues() {
         logger.debug { "inicializando valores por defecto de pago" }
-        totalPagar.text = "Pagar ${viewCarrito.state.value.total}"
+        totalPagar.text = ":  ${viewCarrito.state.value.total}"
     }
 
     private fun initDefaultEvents() {

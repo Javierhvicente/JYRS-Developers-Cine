@@ -1,5 +1,6 @@
 package org.example.demo.productos.butaca.storage
 
+
 import com.github.michaelbull.result.Err
 import com.github.michaelbull.result.Ok
 import com.github.michaelbull.result.Result
@@ -36,7 +37,7 @@ class ButacaStorageImpl:ButacaStorage {
             Ok(file.writeText(json.encodeToString<List<ButacaDto>>(list.map { it.toButacaDto() })))
         }catch (e: Exception){
             logger.error { "Error al guardar el fichero json de butacas" }
-             Err(ButacaError.FicheroNoValido("Error al guardar el fichero json"))
+            Err(ButacaError.FicheroNoValido("Error al guardar el fichero json"))
         }
     }
 
@@ -104,10 +105,10 @@ class ButacaStorageImpl:ButacaStorage {
         logger.debug { "Guardando butacas en fichero csv" }
         return try {
             file.writeText("ID,Estado,Tipo,Precio,Ocupacion,CreatedAt\n")
-                list.map { it. toButacaDto() }
-                    .forEach {
-                        file.appendText("${it.id},${it.estado},${it.tipo},${it.precio},${it.ocupacion},${it.createAt}\n")
-                    }
+            list.map { it. toButacaDto() }
+                .forEach {
+                    file.appendText("${it.id},${it.estado},${it.tipo},${it.precio},${it.ocupacion},${it.createAt}\n")
+                }
             Ok(Unit)
 
         } catch (e: Exception) {

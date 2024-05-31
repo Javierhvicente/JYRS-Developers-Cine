@@ -1,4 +1,4 @@
-package org.example.demo.view.viewModel
+package org.example.demo.usuarios.viewModel
 
 import com.github.michaelbull.result.mapBoth
 import javafx.beans.property.SimpleObjectProperty
@@ -6,7 +6,7 @@ import org.example.demo.productos.complementos.services.ComplementoService
 import org.example.demo.productos.models.Bebida
 import org.example.demo.productos.models.Comida
 import org.example.demo.productos.models.Complemento
-import org.example.demo.view.viewModel.GestionButacaViewModel.GestButacasState
+import org.example.demo.usuarios.viewModel.GestionButacaViewModel.GestButacasState
 import org.koin.dsl.koinApplication
 
 class NewComplementoViewModel(

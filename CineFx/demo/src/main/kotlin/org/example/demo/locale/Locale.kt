@@ -28,7 +28,7 @@ fun LocalDate.toShortSpanishFormat(): String {
  */
 
 fun Double.toDefaultMoneyString():String{
-    return NumberFormat.getCurrencyInstance(Locale.getDefault()).format(this)
+    return NumberFormat.getCurrencyInstance(Locale("es", "ES")).format(this)
 }
 fun String.returnDateTimeString():LocalDate{
     val cadena=this.split("/")

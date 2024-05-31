@@ -24,8 +24,8 @@ module org.example.demo {
     opens org.example.demo.view.controllers to javafx.fxml;
     exports org.example.demo.view.controllers;
 
-    opens org.example.demo.view.viewModel to javafx.fxml;
-    exports org.example.demo.view.viewModel;
+    opens org.example.demo.usuarios.viewModel to javafx.fxml;
+    exports org.example.demo.usuarios.viewModel;
 
     opens org.example.demo.usuarios.models to javafx.fxml;
     exports org.example.demo.usuarios.models;

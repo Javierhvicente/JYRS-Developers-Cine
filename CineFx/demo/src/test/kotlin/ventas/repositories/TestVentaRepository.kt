@@ -69,13 +69,18 @@ class TestVentaRepository {
         dbManager.databaseQueries.insertUser(cliente.email,cliente.nombre,cliente.apellidos,"cliente",cliente.contraseña)
         complemento = Bebida(
             id="AGUA",
-            nombre = CategoriaBebida.AGUA,
+            tipo = CategoriaBebida.AGUA.toString(),
+            imagen = "agua.png",
+            precio = 2.0
         )
-        dbManager.databaseQueries.insertComplemento("BEBIDA",complemento.id,(complemento as Bebida).nombre.toString(),(complemento as Bebida).precio.toLong())
+        dbManager.databaseQueries.insertComplemento("BEBIDA",complemento.id, precio = 2.0.toLong(), imagen = "agua.png", nombre = "AGUA"
+        )
         butaca = Butaca(
             id="A1",
             estado = Estado.ACTIVA,
             tipo = Tipo.NORMAL,
+            ocupacion = Ocupacion.LIBRE,
+            precio = 5.0
         )
         dbManager.databaseQueries.insertarbutaca(butaca.id,butaca.estado.toString(),butaca.tipo.toString(),butaca.ocupacion.toString(),butaca.precio,butaca.create.toShortSpanishFormat())
         lineaVenta1 = LineaVenta(

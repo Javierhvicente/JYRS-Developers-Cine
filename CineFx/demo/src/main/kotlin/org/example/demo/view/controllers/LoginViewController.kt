@@ -9,7 +9,7 @@ import javafx.scene.control.TextField
 import javafx.scene.image.ImageView
 import org.example.demo.routes.RoutesManager
 import org.example.demo.usuarios.models.Admin
-import org.example.demo.view.viewModel.LoginViewModel
+import org.example.demo.usuarios.viewModel.LoginViewModel
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 import org.lighthousegames.logging.Platform
@@ -19,7 +19,7 @@ import org.lighthousegames.logging.logging
 private val logger= logging()
 class LoginViewController:KoinComponent {
 
-    val view:LoginViewModel by inject()
+    val view: LoginViewModel by inject()
     @FXML
     lateinit var nombreLogin: TextField
     @FXML

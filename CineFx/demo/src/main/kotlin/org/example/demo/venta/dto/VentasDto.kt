@@ -4,6 +4,17 @@ import kotlinx.serialization.Serializable
 import org.example.demo.productos.dto.ProductoDto
 import org.example.demo.usuarios.dto.UsuarioDto
 
+/**
+ * Clase Dto de venta
+ * @property id
+ * @property cliente
+ * @property lineas
+ * @property total
+ * @property createdAt
+ * @property updatedAt
+ * @author Raúl Fernández, Yahya El Hadri, Samuel Cortés, Javier Hernández
+ * @since 1.0
+ */
 
 @Serializable
 data class VentaDto(
@@ -14,6 +25,18 @@ data class VentaDto(
     val createdAt: String,
     val updatedAt: String
 )
+
+/**
+ * Clase Dto de LineaVenta.
+ * @property id
+ * @property producto
+ * @property cantidad
+ * @property precio
+ * @property createdAt
+ * @property updatedAt
+ * @author Raúl Fernández, Yahya El Hadri, Samuel Cortés, Javier Hernández
+ * @since 1.0
+ */
 
 @Serializable
 data class LineaVentaDto(

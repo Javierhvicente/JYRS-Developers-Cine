@@ -1,4 +1,4 @@
-package org.example.demo.view.viewModel
+package org.example.demo.usuarios.viewModel
 
 import org.example.demo.venta.models.Venta
 import org.example.demo.venta.services.VentasService

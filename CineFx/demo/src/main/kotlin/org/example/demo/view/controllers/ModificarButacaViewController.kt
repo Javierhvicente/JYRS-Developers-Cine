@@ -6,16 +6,16 @@ import javafx.scene.control.Button
 import javafx.scene.control.ComboBox
 import javafx.scene.control.TextField
 import org.example.demo.routes.RoutesManager
-import org.example.demo.view.viewModel.GestionButacaViewModel
-import org.example.demo.view.viewModel.ModificarButacaViewModel
+import org.example.demo.usuarios.viewModel.GestionButacaViewModel
+import org.example.demo.usuarios.viewModel.ModificarButacaViewModel
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 import org.lighthousegames.logging.logging
 
 private val logger= logging()
 class ModificarButacaViewController:KoinComponent {
-    val view:ModificarButacaViewModel by inject()
-    val viewGest:GestionButacaViewModel by inject()
+    val view: ModificarButacaViewModel by inject()
+    val viewGest: GestionButacaViewModel by inject()
     @FXML
     lateinit var textId:TextField
     @FXML

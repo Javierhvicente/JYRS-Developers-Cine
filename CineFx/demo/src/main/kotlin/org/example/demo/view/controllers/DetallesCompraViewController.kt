@@ -12,10 +12,10 @@ import org.example.demo.productos.models.Butaca
 import org.example.demo.productos.models.Comida
 import org.example.demo.productos.models.Complemento
 import org.example.demo.routes.RoutesManager
-import org.example.demo.view.viewModel.CarritoViewModel
-import org.example.demo.view.viewModel.DetallesCompraViewModel
-import org.example.demo.view.viewModel.LoginViewModel
-import org.example.demo.view.viewModel.PagoViewModel
+import org.example.demo.usuarios.viewModel.CarritoViewModel
+import org.example.demo.usuarios.viewModel.DetallesCompraViewModel
+import org.example.demo.usuarios.viewModel.LoginViewModel
+import org.example.demo.usuarios.viewModel.PagoViewModel
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 import org.lighthousegames.logging.logging
@@ -25,7 +25,7 @@ import org.lighthousegames.logging.logging
 private val logger= logging()
 class DetallesCompraViewController: KoinComponent {
 
-    val viewLogin:LoginViewModel by inject()
+    val viewLogin: LoginViewModel by inject()
     val viewPago: PagoViewModel by inject()
     val view: DetallesCompraViewModel by inject()
 
@@ -80,7 +80,7 @@ class DetallesCompraViewController: KoinComponent {
         butacasLista.text = butacas.joinToString(separator = "\n")
         complementosLista.text = complementos.joinToString(separator = "\n")
 
-        fxTotalLabel.text = viewPago.state.value.venta.total.toDefaultMoneyString()
+        fxTotalLabel.text = ((viewPago.state.value.venta.total * 0.21) + viewPago.state.value.venta.total).toDefaultMoneyString()
 
     }
 

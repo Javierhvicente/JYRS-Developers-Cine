@@ -1,4 +1,4 @@
-package org.example.demo.view.viewModel
+package org.example.demo.usuarios.viewModel
 
 import com.github.michaelbull.result.mapBoth
 import javafx.beans.property.SimpleObjectProperty
@@ -7,7 +7,7 @@ import org.example.demo.productos.models.Bebida
 import org.example.demo.productos.models.Comida
 import org.example.demo.productos.models.Complemento
 import org.example.demo.venta.mappers.logger
-import org.example.demo.view.viewModel.GestionComplementoViewModel.ComplementoState
+import org.example.demo.usuarios.viewModel.GestionComplementoViewModel.ComplementoState
 import java.io.File
 
 class ActualizarComplViewModel(

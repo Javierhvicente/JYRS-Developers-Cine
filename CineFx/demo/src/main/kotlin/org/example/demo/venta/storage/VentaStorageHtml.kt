@@ -33,6 +33,17 @@ import java.util.*
 
 private val logger = logging()
 class VentaStorageHtml:VentasStorage {
+
+    /**
+     * Tomamos una venta y la exportamos a un archivo HTML.
+     * @param venta
+     * @param file
+     * @param pelicula
+     * @return Devuelve un resultado indicando si la operación fue exitosa o no.
+     * @since 1.0
+     * @author Raúl fernández, Javier Hernández, Yahya El Hadri, Samuel Cortés.
+     */
+
     override fun export(venta: Venta, file: File,pelicula:String): Result<Unit, VentaError> {
         return try {
             val lineasHtml = venta.lineas.joinToString("") {
@@ -119,7 +130,7 @@ class VentaStorageHtml:VentasStorage {
                                     $lineasHtml
                                 </tbody>
                             </table>
-                            <p>Total: <span class="total">${venta.total.toDefaultMoneyString()}</span></p>
+                            <p>Total: <span class="total">${venta.total.toDefaultMoneyString()} + 21%IVA = ${((venta.total * 0.21) + venta.total).toDefaultMoneyString()}</span></p>
                         </div>
                     </body>
                     </html>
@@ -131,6 +142,15 @@ class VentaStorageHtml:VentasStorage {
             Err(VentaError.VentaStorageError("Error al salvar ventas a fichero ${file.absolutePath}. ${e.message}"))
         }
     }
+
+    /**
+     * Tomamos una lista de ventas y la guarda en un archivo JSON.
+     * @param file
+     * @param list
+     * @return Devuelve un resultado indicando si la operación fue exitosa o no.
+     * @since 1.0
+     * @author Raúl fernández, Javier Hernández, Yahya El Hadri, Samuel Cortés.
+     */
 
     override fun save(file: File, list: List<Venta>): Result<Unit, VentaError> {
         logger.debug { "Guardando ventas en fichero json" }
@@ -152,6 +172,14 @@ class VentaStorageHtml:VentasStorage {
             Err(VentaError.VentaStorageError("Error al guardar el JSON: ${e.message}"))
         }
     }
+
+    /**
+     * Carga una lista de ventas desde un archivo JSON.
+     * @param file
+     * @return Devuelve un resultado indicando si la operación fue exitosa o no.
+     * @since 1.0
+     * @author Raúl fernández, Javier Hernández, Yahya El Hadri, Samuel Cortés.
+     */
 
     override fun load(file: File): Result<List<Venta>, VentaError> {
         logger.debug { "Cargando ventas desde $file" }

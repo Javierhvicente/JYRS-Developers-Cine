@@ -45,6 +45,12 @@ fun ComplementoDto.toComplemento(): Complemento {
     throw ComplementoException.TipoInvalido("Tipo no valido")
 }
 
+/**
+ * Mapear un objeto complemento a un objeto toComplementoDto.
+ * @author Raúl Fernández, Yahya El Hadri, Samuel Cortés, Javier Hernández.
+ * @since 1.0
+ */
+
 fun Complemento.toComplementoDto():ComplementoDto{
     return ComplementoDto(
         tipoComplemento = this.tipo,

@@ -4,18 +4,15 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.Blend?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.paint.Color?>
-<?import javafx.scene.paint.LinearGradient?>
-<?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="340.0" prefWidth="230.0" style="-fx-background-color: #061326;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.demo.view.controllers.ModificarButacaViewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="340.0" prefWidth="230.0" style="-fx-background-color: #061326;" stylesheets="@../styles/cine.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.demo.view.controllers.ModificarButacaViewController">
     <children>
         <VBox prefHeight="340.0" prefWidth="230.0">
             <children>
@@ -23,16 +20,12 @@
                     <children>
                         <AnchorPane prefHeight="96.0" prefWidth="229.0">
                             <children>
-                                <ImageView fx:id="butacaImage" fitHeight="59.0" fitWidth="75.0" layoutX="85.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                                <ImageView fx:id="butacaImage" fitHeight="59.0" fitWidth="75.0" layoutX="85.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
                                         <Image url="@../images/butaca2.png" />
                                     </image>
                                     <effect>
-                                        <DropShadow>
-                                            <color>
-                                                <Color red="1.0" green="0.06666667014360428" />
-                                            </color>
-                                        </DropShadow>
+                              <Blend />
                                     </effect>
                                 </ImageView>
                             </children>
@@ -66,13 +59,13 @@
                                         <Font name="Arial Black" size="14.0" />
                                     </font>
                                 </Label>
-                                <ComboBox fx:id="comboEstado" editable="true" layoutX="132.0" layoutY="85.0" prefHeight="26.0" prefWidth="82.0" />
                                 <Label layoutX="30.0" layoutY="172.0" text="OCUPACIÓN" textFill="WHITE" AnchorPane.leftAnchor="30.0">
                                     <font>
                                         <Font name="Arial Black" size="14.0" />
                                     </font>
                                 </Label>
-                                <ComboBox fx:id="comboOcupacion" editable="true" layoutX="133.0" layoutY="170.0" prefHeight="26.0" prefWidth="81.0" />
+                        <ComboBox fx:id="comboEstado" layoutX="133.0" layoutY="85.0" prefHeight="26.0" prefWidth="82.0" />
+                        <ComboBox fx:id="comboOcupacion" layoutX="133.0" layoutY="170.0" prefHeight="26.0" prefWidth="82.0" />
                             </children>
                         </AnchorPane>
                     </children>
@@ -81,63 +74,19 @@
                     <children>
                         <AnchorPane prefHeight="54.0" prefWidth="230.0">
                             <children>
-                                <Button fx:id="botonGuardar" alignment="TOP_CENTER" layoutX="14.0" layoutY="18.0" mnemonicParsing="false" style="-fx-border-color: white;" text="Guardar">
-                                    <textFill>
-                                        <LinearGradient endX="1.0" endY="1.0">
-                                            <stops>
-                                                <Stop>
-                                                    <color>
-                                                        <Color />
-                                                    </color>
-                                                </Stop>
-                                                <Stop offset="1.0">
-                                                    <color>
-                                                        <Color />
-                                                    </color>
-                                                </Stop>
-                                            </stops>
-                                        </LinearGradient>
-                                    </textFill>
+                                <Button fx:id="botonGuardar" alignment="TOP_CENTER" layoutX="14.0" layoutY="18.0" mnemonicParsing="false" style="-fx-background-color: white;" text="Guardar">
                                     <effect>
-                                        <DropShadow>
-                                            <color>
-                                                <Color red="1.0" />
-                                            </color>
-                                        </DropShadow>
+                              <Blend />
                                     </effect>
                                 </Button>
-                                <Button fx:id="botonLimpiar" layoutX="83.0" layoutY="18.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="61.0" style="-fx-border-color: white;" text="Limpiar">
-                                    <textFill>
-                                        <LinearGradient endX="1.0" endY="1.0">
-                                            <stops>
-                                                <Stop>
-                                                    <color>
-                                                        <Color />
-                                                    </color>
-                                                </Stop>
-                                                <Stop offset="1.0">
-                                                    <color>
-                                                        <Color />
-                                                    </color>
-                                                </Stop>
-                                            </stops>
-                                        </LinearGradient>
-                                    </textFill>
+                                <Button fx:id="botonLimpiar" layoutX="83.0" layoutY="18.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="61.0" style="-fx-background-color: white;" text="Limpiar">
                                     <effect>
-                                        <DropShadow>
-                                            <color>
-                                                <Color red="1.0" />
-                                            </color>
-                                        </DropShadow>
+                              <Blend />
                                     </effect>
                                 </Button>
-                                <Button fx:id="botonCancelar" alignment="TOP_CENTER" layoutX="152.0" layoutY="18.0" mnemonicParsing="false" style="-fx-border-color: white;" text="Cancelar">
+                                <Button fx:id="botonCancelar" alignment="TOP_CENTER" layoutX="152.0" layoutY="18.0" mnemonicParsing="false" style="-fx-background-color: white;" text="Cancelar">
                                     <effect>
-                                        <DropShadow>
-                                            <color>
-                                                <Color red="1.0" />
-                                            </color>
-                                        </DropShadow>
+                              <Blend />
                                     </effect></Button>
                             </children>
                         </AnchorPane>

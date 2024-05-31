@@ -5,14 +5,14 @@ import javafx.scene.control.Button
 import javafx.scene.control.PasswordField
 import javafx.scene.control.TextField
 import org.example.demo.routes.RoutesManager
-import org.example.demo.view.viewModel.RegistroViewModel
+import org.example.demo.usuarios.viewModel.RegistroViewModel
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 import org.lighthousegames.logging.logging
 
 private val logger= logging()
 class RegistroViewController:KoinComponent {
-    val view:RegistroViewModel by inject()
+    val view: RegistroViewModel by inject()
     @FXML
     lateinit var nombreRegister1: TextField
     @FXML

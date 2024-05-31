@@ -14,6 +14,7 @@ import org.lighthousegames.logging.logging
  * @author Yahya El Hadri, Raúl Fernández, Javier Hernández, Samuel Cortés
  * @since 1.0
  */
+
 val logger= logging()
 fun UsuariosEntity.toUsuario(): Usuario {
     logger.debug { "Mapeando UsuarioEntity ${this.nombre} a Usuario" }
@@ -23,6 +24,13 @@ fun UsuariosEntity.toUsuario(): Usuario {
         else -> throw IllegalArgumentException("Tipo de usuario no soportado")
     }
 }
+
+/**
+ * Mapeamos un objeto UsuarioDto.
+ * @return UsuarioDto
+ * @author Yahya El Hadri, Raúl Fernández, Javier Hernández, Samuel Cortés
+ * @since 1.0
+ */
 
 fun Usuario.toUsuarioDto():UsuarioDto{
     logger.debug { "Mapeando Usuario ${this.nombre} a UsuarioDto" }
@@ -39,6 +47,14 @@ fun Usuario.toUsuarioDto():UsuarioDto{
         }
     )
 }
+
+
+/**
+ * Mapeamos un objeto UsuarioDto a un usuario.
+ * @return Si el tipo de usuario no es reconocido se lanza una excepción, si el usuario es reconocido la función ha sido exitosa.
+ * @author Yahya El Hadri, Raúl Fernández, Javier Hernández, Samuel Cortés
+ * @since 1.0
+ */
 
 fun UsuarioDto.toUsuario():Usuario{
     logger.debug { "Mapeando UsuarioDto ${this.nombre} a Usuario" }

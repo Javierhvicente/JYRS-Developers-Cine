@@ -33,6 +33,13 @@ fun validateUser(user: Usuario): Result<Usuario, UserError>{
     return Ok(user)
 }
 
+/**
+ * Válida la si una cadena de texto representa una fecha válida en el formato que hemos puesto.
+ * @return Si la conversión es exitosa devuelve un true, si no devuelve un error.
+ * @author Raúl Fernández, Yahya El Hadri, Samuel Cortés, Javier Hernández
+ * @since 1.0
+ */
+
 fun isValidLocalDate(dateString: String): Boolean {
     return try {
         val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
@@ -43,6 +50,12 @@ fun isValidLocalDate(dateString: String): Boolean {
     }
 }
 
+/**
+ * Valida los nombres de un usuario.
+ * @return Devuelve un error si el nombre esta vacio y el apellido validado si es válido.
+ * @author Raúl Fernández, Yahya El Hadri, Samuel Cortés, Javier Hernández
+ * @since 1.0
+ */
 
 fun validateNombre(nombre: String): Boolean{
     if(nombre.isEmpty() || nombre.isBlank()){

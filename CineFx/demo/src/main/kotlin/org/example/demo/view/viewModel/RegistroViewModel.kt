@@ -1,4 +1,4 @@
-package org.example.demo.view.viewModel
+package org.example.demo.usuarios.viewModel
 
 import com.github.michaelbull.result.mapBoth
 import com.github.michaelbull.result.onSuccess

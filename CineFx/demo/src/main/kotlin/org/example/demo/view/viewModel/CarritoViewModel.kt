@@ -1,4 +1,4 @@
-package org.example.demo.view.viewModel
+package org.example.demo.usuarios.viewModel
 
 import javafx.beans.property.SimpleObjectProperty
 import org.example.demo.productos.models.Butaca

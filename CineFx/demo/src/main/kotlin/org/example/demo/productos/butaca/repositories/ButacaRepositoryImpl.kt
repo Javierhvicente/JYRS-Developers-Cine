@@ -95,19 +95,19 @@ class ButacaRepositoryImpl(
      * @author Javier Hernández, Yahya El Hadri, Samuel Cortés, Raúl Fernández
      */
 
-    override fun update(id: String, butaca: Butaca,ocupacion: Ocupacion,precio:Double): Butaca? {
+    override fun update(id: String, butaca: Butaca): Butaca? {
         logger.debug { "Actualizando butaca con id: $id" }
         db.updateButacaEntity(
-            id = id,
+            id = butaca.id,
             estado = butaca.estado.toString(),
             tipo = butaca.tipo.toString(),
-            ocupacion = ocupacion.toString(),
-            precio = precio,
+            ocupacion = butaca.ocupacion.toString(),
+            precio = butaca.precio,
         )
 
         logger.debug { "Actualizada butaca con id: $id" }
         println("ActualizaDA butaca con id: $id")
-         val result = this.findById(id)!!
+        val result = this.findById(id)
         return result
     }
 

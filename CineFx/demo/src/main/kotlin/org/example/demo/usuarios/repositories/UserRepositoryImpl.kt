@@ -19,6 +19,15 @@ class UserRepositoryImpl(
         private val dbManager: SqlDelightManager
 ): UserRepository {
     private val db = dbManager.databaseQueries
+
+        /**
+         * Se encarga de guardar un usuario en la base de datos.
+         * @param user
+         * @return Devuelve un usuario.
+         * @author Yahya El Hadri, Raúl Fernández, Javier Hernández, Samuel Cortés
+         * @since 1.0
+         */
+
     override fun save(user: Usuario): Usuario? {
         logger.debug { "Guardando Usuario: $user" }
         logger.debug { "save: $user" }
@@ -33,6 +42,14 @@ class UserRepositoryImpl(
         }
         return user
     }
+
+        /**
+         * Se encarga de guardar un usuario en la base de datos a partir de un objeto 'usuario'.
+         * @param user
+         * @return Devuelve el mismo objeto 'usuario'.
+         * @author Yahya El Hadri, Raúl Fernández, Javier Hernández, Samuel Cortés
+         * @since 1.0
+         */
 
         override fun saveFromJson(user: Usuario): Usuario? {
             logger.debug { "Guardando Usuario desde JSON: $user" }
@@ -95,6 +112,13 @@ class UserRepositoryImpl(
         logger.debug { "Buscando usuario por id: $id" }
         return db.selectById(id).executeAsOneOrNull()?.toUsuario()
     }
+
+        /**
+         * Nos encargamos de obtener todos los clientes en la base de datos.
+         * @return Devuelve los clientes encontrados en la base de datos.
+         * @author Yahya El Hadri, Raúl Fernández, Javier Hernández, Samuel Cortés
+         * @since 1.0
+         */
 
     override fun getAllClientes(): List<Usuario>{
         logger.debug { "Buscando todos los clientes" }

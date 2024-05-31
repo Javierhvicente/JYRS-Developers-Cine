@@ -24,12 +24,29 @@ class VentasServiceImpl(
     private val butacasRepository: ButacaRepository,
     private val ventasSotrageHtml: VentasStorage
 ): VentasService{
+
+    /**
+     * Intentamos recuperar una venta por su ID.
+     * @return Y devuelve un ok si la operación fue exitosa y si no se lanzara un error.
+     * @param id
+     * @since 1.0
+     * @author Raúl Fernández, Yahya El Hadri, Samuel Cortés, Javier Hernández
+     */
+
     override fun getById(id: UUID): Result<Venta, VentaError> {
         logger.debug { "Obteniendo venta por id: $id" }
         return ventasRepository.getById(id)
             ?. let { Ok(it) }
             ?: Err(VentaError.VentaNoEncontrada("No se ha encontrado la venta con id: $id"))
     }
+
+    /**
+     * Intentamos recuperar una venta por su ID.
+     * @return Y devuelve un ok si la operación fue exitosa y si no se lanzara un error.
+     * @param id
+     * @since 1.0
+     * @author Raúl Fernández, Yahya El Hadri, Samuel Cortés, Javier Hernández
+     */
 
     override fun create(venta: Venta): Result<Venta, VentaError> {
         logger.debug { "Creando venta: $venta" }
@@ -42,6 +59,14 @@ class VentasServiceImpl(
                     }
         )
     }
+
+    /**
+     * Validamos una lista de objetos siendo el objeto 'LineaVenta'.
+     * @return Y devuelve un ok si la operación fue exitosa y si no se lanzara un error.
+     * @param lineas
+     * @since 1.0
+     * @author Raúl Fernández, Yahya El Hadri, Samuel Cortés, Javier Hernández
+     */
 
    fun validateLineas(lineas: List<LineaVenta>): Result<List<LineaVenta>, VentaError> {
         logger.debug { "Validando lineas - Existen Productos: $lineas" }
@@ -64,6 +89,14 @@ class VentasServiceImpl(
         return Ok(lineas)
     }
 
+    /**
+     * Validamos una lista de objetos siendo el objeto 'Cliente'.
+     * @return Y devuelve un ok si la operación fue exitosa y si no se lanzara un error.
+     * @param cliente
+     * @since 1.0
+     * @author Raúl Fernández, Yahya El Hadri, Samuel Cortés, Javier Hernández
+     */
+
     fun validateCliente(cliente: Usuario): Result<Usuario, VentaError> {
         logger.debug { "Validando cliente: $cliente" }
         return validateUser(cliente).mapBoth(
@@ -75,6 +108,15 @@ class VentasServiceImpl(
             }
         )
     }
+
+    /**
+     * Validamos una lista de objetos siendo el objeto 'Cliente'.
+     * @return Y devuelve un ok si la operación fue exitosa y la venta se elimino y si no se lanzara un error.
+     * @param id
+     * @since 1.0
+     * @author Raúl Fernández, Yahya El Hadri, Samuel Cortés, Javier Hernández
+     */
+
     override fun delete(id: UUID): Result<Venta, VentaError> {
         logger.debug { "Eliminando venta : $id" }
         return ventasRepository.delete(id)
@@ -82,11 +124,29 @@ class VentasServiceImpl(
             ?: Err(VentaError.VentaNoEncontrada("No se a encontrado la venta $id"))
     }
 
+    /**
+     * Obtenemos toda la venta desde el repositorio.
+     * @return Y devuelve un ok con la lista de ventas y si no se lanzara un error.
+     * @param id
+     * @since 1.0
+     * @author Raúl Fernández, Yahya El Hadri, Samuel Cortés, Javier Hernández
+     */
+
     override fun getAll(): Result<List<Venta>, VentaError> {
         logger.debug { "Obteniendo todas las ventas" }
         return Ok( ventasRepository.getAll())
             ?: Err(VentaError.VentaNoEncontrada("No se han encontrado las ventas"))
     }
+
+    /**
+     * Exportamos una venta a un archivo HTML.
+     * @return Devuelve un error que puede ser exitoso o error.
+     * @param venta
+     * @param htmlFile
+     * @param pelicula
+     * @since 1.0
+     * @author Raúl Fernández, Yahya El Hadri, Samuel Cortés, Javier Hernández
+     */
 
     override fun exportToHtml(venta: Venta, htmlFile: File,pelicula:String): Result<Unit, VentaError> {
         logger.debug { "Exportando venta a fichero html $htmlFile" }

@@ -1,4 +1,4 @@
-package org.example.demo.view.viewModel
+package org.example.demo.usuarios.viewModel
 
 import com.github.michaelbull.result.mapBoth
 import javafx.beans.property.SimpleObjectProperty
@@ -11,7 +11,7 @@ import org.example.demo.usuarios.models7.Usuario
 import org.example.demo.venta.models.LineaVenta
 import org.example.demo.venta.models.Venta
 import org.example.demo.venta.services.VentasService
-import org.example.demo.view.viewModel.LoginViewModel.LoginState
+import org.example.demo.usuarios.viewModel.LoginViewModel.LoginState
 
 class PagoViewModel (
     val service:VentasService

@@ -11,6 +11,7 @@ import org.example.demo.productos.butaca.storage.ButacaStorageImpl
 import org.example.demo.productos.butaca.validator.ButacaValidator
 import org.example.demo.productos.models.Butaca
 import org.example.demo.productos.models.Estado
+import org.example.demo.productos.models.Ocupacion
 import org.example.demo.productos.models.Tipo
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
@@ -53,7 +54,7 @@ class TestButacaService {
 
     @Test
     fun getButacaById() {
-        val butaca = Butaca("A1", Estado.ACTIVA, Tipo.NORMAL)
+        val butaca = Butaca("A1", Estado.ACTIVA, Tipo.NORMAL, ocupacion =  Ocupacion.LIBRE, precio = 5.0)
 
         Mockito.`when`(mockButacaCache.get(butaca.id)).thenReturn(Ok(butaca))
 
@@ -69,7 +70,7 @@ class TestButacaService {
 
     @Test
     fun getButacaByIdErr() {
-        val butaca = Butaca("A1", Estado.ACTIVA, Tipo.NORMAL)
+        val butaca = Butaca("A1", Estado.ACTIVA, Tipo.NORMAL, ocupacion =  Ocupacion.LIBRE, precio = 5.0)
         val message = "No existe el valor en la cache"
 
         Mockito.`when`(mockButacaCache.get(butaca.id)).thenReturn(Err(CacheError(message)))
@@ -87,7 +88,7 @@ class TestButacaService {
 
     @Test
     fun saveButaca() {
-        val butaca = Butaca("A3", Estado.ACTIVA, Tipo.NORMAL)
+        val butaca = Butaca("A3", Estado.ACTIVA, Tipo.NORMAL, ocupacion =  Ocupacion.LIBRE, precio = 5.0)
         Mockito.`when`(mockButacaValidator.validarButaca(butaca)).thenReturn(Ok(butaca))
         Mockito.`when`(mockButacaRepository.save(butaca)).thenReturn(butaca)
         Mockito.`when`(mockButacaCache.put(butaca.id, butaca)).thenReturn(Ok(butaca))
@@ -104,45 +105,45 @@ class TestButacaService {
 
     @Test
     fun updateButaca() {
-        val butaca = Butaca("A1", Estado.ACTIVA, Tipo.NORMAL)
-        Mockito.`when`(mockButacaValidator.validarButaca(butaca)).thenReturn(Ok(butaca))
-        Mockito.`when`(mockButacaRepository.update(butaca.id, butaca, butaca.ocupacion, butaca.precio))
-            .thenReturn(butaca)
-        Mockito.`when`(mockButacaCache.put(butaca.id, butaca)).thenReturn(Ok(butaca))
+        val butaca = Butaca("A1", Estado.ACTIVA, Tipo.VIP, ocupacion =  Ocupacion.OCUPADA, precio = 20.0)
+        whenever(mockButacaValidator.validarButaca(butaca)).thenReturn(Ok(butaca))
+        whenever(mockButacaRepository.update(butaca.id, butaca)).thenReturn(butaca)
+        whenever(mockButacaCache.put(butaca.id, butaca)).thenReturn(Ok(butaca))
 
-        val result = service.update(butaca.id, butaca, butaca.ocupacion, butaca.precio)
+        val result = service.update(butaca.id, butaca)
 
         assertTrue(result.isOk)
-        assertTrue(result.value == butaca)
+        assertEquals( Ocupacion.OCUPADA, result.value.ocupacion)
+        assertEquals(20.0, result.value.precio)
 
         verify(mockButacaValidator, times(1)).validarButaca(butaca)
-        verify(mockButacaRepository, times(1)).update(butaca.id, butaca, butaca.ocupacion, butaca.precio)
+        verify(mockButacaRepository, times(1)).update(butaca.id, butaca)
         verify(mockButacaCache, times(1)).put(butaca.id, butaca)
     }
 
     @Test
     fun updateButacaErr() {
-        val butaca = Butaca("C6", Estado.ACTIVA, Tipo.NORMAL)
+        val butaca = Butaca("C6", Estado.ACTIVA, Tipo.NORMAL, ocupacion =  Ocupacion.LIBRE, precio = 5.0)
         Mockito.`when`(mockButacaValidator.validarButaca(butaca)).thenReturn(Ok(butaca))
-        Mockito.`when`(mockButacaRepository.update(butaca.id, butaca, butaca.ocupacion, butaca.precio)).thenReturn(null)
+        Mockito.`when`(mockButacaRepository.update(butaca.id, butaca)).thenReturn(null)
 
-        val result = service.update(butaca.id, butaca, butaca.ocupacion, butaca.precio)
+        val result = service.update(butaca.id, butaca)
 
         assertTrue(result.isErr)
         assertTrue(result.error is ButacaError.ButacaNoActualizadas)
-        assertEquals(result.error.mensage, "No se ha podido actualizar la butaca: ${butaca.id}")
+        assertEquals("No se ha podido actualizar la butaca con id: ${butaca.id}", result.error.mensage)
 
         verify(mockButacaValidator, times(1)).validarButaca(butaca)
-        verify(mockButacaRepository, times(1)).update(butaca.id, butaca, butaca.ocupacion, butaca.precio)
+        verify(mockButacaRepository, times(1)).update(butaca.id, butaca)
         verify(mockButacaCache, times(0)).put(butaca.id, butaca)
     }
 
     @Test
     fun export(){
-        val lista = listOf(Butaca("A1", Estado.ACTIVA, Tipo.NORMAL))
+        val lista = listOf(Butaca("A1", Estado.ACTIVA, Tipo.NORMAL, ocupacion =  Ocupacion.LIBRE, precio = 5.0))
         val myFile = File("data", "butacas.csv")
 
-        whenever(storage.load(myFile)).thenReturn(Ok(lista))
+        whenever(storage.loadCsv(myFile)).thenReturn(Ok(lista))
 
         val result = storage.loadCsv(myFile)
 

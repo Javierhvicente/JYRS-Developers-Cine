@@ -1,11 +1,11 @@
-package org.example.demo.view.viewModel
+package org.example.demo.usuarios.viewModel
 
 import javafx.beans.property.SimpleObjectProperty
 import org.example.demo.locale.toDefaultMoneyString
 import org.example.demo.productos.butaca.mappers.toButacaDto
 import org.example.demo.productos.butaca.services.ButacaService
 import org.example.demo.productos.models.*
-import org.example.demo.view.viewModel.GestionButacaViewModel.GestButacasState
+import org.example.demo.usuarios.viewModel.GestionButacaViewModel.GestButacasState
 import java.time.ZoneId
 
 class ModificarButacaViewModel(
@@ -55,14 +55,7 @@ class ModificarButacaViewModel(
         )
         service.update(
             state.value.butacaModificar!!.id,
-            butaca = butaca,
-            ocupacion = when(ocupacion){
-                "LIBRE"->Ocupacion.LIBRE
-                "OCUPADA"->Ocupacion.OCUPADA
-                "INACTIVA"->Ocupacion.INACTIVA
-                else->Ocupacion.INACTIVA
-            },
-            precio = precio.toDouble()
+            butaca = butaca
         )
     }
 

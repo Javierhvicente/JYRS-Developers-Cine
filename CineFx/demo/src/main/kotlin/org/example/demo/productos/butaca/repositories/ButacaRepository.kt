@@ -8,7 +8,7 @@ interface ButacaRepository {
         fun save(producto: Butaca): Butaca
         fun findById(id: String): Butaca?
         fun findByTipo(tipo: String): List<Butaca>
-        fun update(id: String, butaca: Butaca, ocupacion: Ocupacion, precio:Double): Butaca?
+        fun update(id: String, butaca: Butaca): Butaca?
         fun findByEstado(estado: String): List<Butaca>
         fun findByOcupacion(ocupacion: String): List<Butaca>
         fun deleteAll()

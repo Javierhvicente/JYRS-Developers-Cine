@@ -24,6 +24,14 @@ class VentasRepositoryImpl(
 ): VentasRepository {
     private val db = dbManager.databaseQueries
 
+    /**
+     * Obtenemos una venta por su id desde una base de datos.
+     * @return Y devuelve un ok si la operación fue exitosa y si no devuelve un null.
+     * @param id
+     * @since 1.0
+     * @author Raúl Fernández, Yahya El Hadri, Samuel Cortés, Javier Hernández
+     */
+
     override fun getById(id: UUID): Venta? {
         logger.debug { "Obteniendo venta por id: $id" }
         if (db.existsVenta(id.toString()).executeAsOne()){
@@ -34,6 +42,15 @@ class VentasRepositoryImpl(
         }
         return null
     }
+
+    /**
+     * Función para recuperar todas las líneas de venta asociadas a una venta especifícada por su ID.
+     * @return Devuelve una lista de estas líneas y si no salta un error
+     * @param venta_id
+     * @since 1.0
+     * @author Raúl Fernández, Yahya El Hadri, Samuel Cortés, Javier Hernández
+     */
+
     private fun allLineas(venta_id:String):List<LineaVenta>{
         val lineas = mutableListOf<LineaVenta>()
         db.selectAllLineaVentaEntityButacaByVentaId(venta_id).executeAsList()
@@ -43,6 +60,14 @@ class VentasRepositoryImpl(
             .forEach { lineas.add(it) }
         return lineas
     }
+
+    /**
+     * Función para guardar una venta.
+     * @return Devuelve una venta.
+     * @param venta
+     * @since 1.0
+     * @author Raúl Fernández, Yahya El Hadri, Samuel Cortés, Javier Hernández
+     */
 
     override fun save(venta: Venta): Venta {
         logger.debug { "Guardando venta: $venta" }
@@ -88,6 +113,13 @@ class VentasRepositoryImpl(
         return venta
     }
 
+    /**
+     * Obtenemos todas las ventas registradas en la base de datos.
+     * @return Devolvemos la venta registrada que hemos buscado.
+     * @since 1.0
+     * @author Raúl Fernández, Yahya El Hadri, Samuel Cortés, Javier Hernández
+     */
+
     override fun getAll(): List<Venta> {
         logger.debug { "Obteniendo todas la ventas registradas" }
         return db.selectAllVentas().executeAsList().map {
@@ -97,6 +129,15 @@ class VentasRepositoryImpl(
             )
         }
     }
+
+    /**
+     * Actualizamos una venta existente en la base de datos.
+     * @param id
+     * @param venta
+     * @return Si la venta existe devuelve la venta, si no devuelve null.
+     * @since 1.0
+     * @author Raúl Fernández, Yahya El Hadri, Samuel Cortés, Javier Hernández
+     */
 
     override fun update(id: UUID, venta: Venta): Venta? {
         logger.debug { "Acualizando venta por id: $id" }
@@ -114,6 +155,14 @@ class VentasRepositoryImpl(
         }
         return null
     }
+
+    /**
+     * Deleteamos una venta existente en la base de datos.
+     * @param id
+     * @return Devolvemos la venta eliminada si la operación fue exitosa y si no manda un error..
+     * @since 1.0
+     * @author Raúl Fernández, Yahya El Hadri, Samuel Cortés, Javier Hernández
+     */
 
     override fun delete(id: UUID): Venta? {
         logger.debug { "Borrando venta por id: $id" }

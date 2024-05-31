@@ -1,14 +1,16 @@
 package org.example.demo.view.controllers
 
+import javafx.beans.property.SimpleStringProperty
 import javafx.collections.FXCollections
 import javafx.fxml.FXML
 import javafx.scene.control.*
 import javafx.scene.control.cell.PropertyValueFactory
 import javafx.scene.image.ImageView
 import javafx.stage.FileChooser
+import org.example.demo.locale.toDefaultMoneyString
 import org.example.demo.productos.models.Complemento
 import org.example.demo.routes.RoutesManager
-import org.example.demo.view.viewModel.GestionComplementoViewModel
+import org.example.demo.usuarios.viewModel.GestionComplementoViewModel
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 import org.lighthousegames.logging.logging
@@ -16,7 +18,7 @@ import org.lighthousegames.logging.logging
 
 private val logger= logging()
 class GestionComplViewController:KoinComponent {
-    val view:GestionComplementoViewModel by inject()
+    val view: GestionComplementoViewModel by inject()
     @FXML
     lateinit var menuAdmin: ImageView
     @FXML
@@ -57,16 +59,21 @@ class GestionComplViewController:KoinComponent {
     }
 
     private fun initDefaultValues() {
+        view.iniciar()
         tablaComplementos.items = FXCollections.observableList(view.state.value.complementos)
 
         nombreColumna.cellValueFactory = PropertyValueFactory("id")
         precioColumna.cellValueFactory = PropertyValueFactory("precio")
 
+        precioColumna.setCellValueFactory {
+            SimpleStringProperty(it.value.precio.toDefaultMoneyString())
+        }
 
         filtroPrecio.items = FXCollections.observableList(view.state.value.precios)
         filtroPrecio.value = "All"
     }
     private fun initReactiveProperties() {
+        view.iniciar()
         view.state.addListener { _,_,newValue->
             tipoTextfield.text=newValue.tipo
             nombreTextfield.text=newValue.nombre

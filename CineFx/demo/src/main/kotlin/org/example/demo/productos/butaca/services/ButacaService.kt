@@ -14,7 +14,7 @@ interface ButacaService {
     fun getByEstado(estado: String): Result<List<Butaca>, ButacaError>
     fun getByOcupacion(ocupacion: String): Result<List<Butaca>, ButacaError>
     fun create(butaca: Butaca): Result<Butaca, ButacaError>
-    fun update(id: String, butaca: Butaca, ocupacion: Ocupacion, precio:Double): Result<Butaca, ButacaError>
+    fun update(id: String, butaca: Butaca): Result<Butaca, ButacaError>
     fun deleteAll()
     fun importCsv(csvFile: File): Result<List<Butaca>, ButacaError>
     fun exportCsv(file:File, list: List<Butaca>): Result<Unit, ButacaError>

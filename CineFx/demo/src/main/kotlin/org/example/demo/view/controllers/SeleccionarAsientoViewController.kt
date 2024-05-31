@@ -9,7 +9,7 @@ import org.example.demo.productos.models.Estado
 import org.example.demo.productos.models.Ocupacion
 import org.example.demo.productos.models.Tipo
 import org.example.demo.routes.RoutesManager
-import org.example.demo.view.viewModel.SeleccionarAsientoViewModel
+import org.example.demo.usuarios.viewModel.SeleccionarAsientoViewModel
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 import org.lighthousegames.logging.logging
@@ -17,7 +17,7 @@ import org.lighthousegames.logging.logging
 
 private val logger= logging()
 class SeleccionarAsientoViewController :KoinComponent{
-    val viewButacas:SeleccionarAsientoViewModel by inject()
+    val viewButacas: SeleccionarAsientoViewModel by inject()
 
     @FXML
     lateinit var butacaImage1a:ImageView
@@ -142,6 +142,7 @@ class SeleccionarAsientoViewController :KoinComponent{
     }
 
     private fun initDefaultValues() {
+        lista = viewButacas.state.value.butacasSeleccionadas
 
         asignarImagen("A1",butacaImage1a)
         asignarImagen("B1",butacaImage1b)
@@ -204,8 +205,7 @@ class SeleccionarAsientoViewController :KoinComponent{
         image.setOnMouseClicked {
             val butaca = viewButacas.buscarButacaId(id)!!
 
-            if (butaca.ocupacion != Ocupacion.SELECCIONADA
-                && butaca.estado != Estado.MANTENIMIENTO
+            if (butaca.estado != Estado.MANTENIMIENTO
                 && butaca.estado != Estado.OCUPADA
                 && !lista.contains(viewButacas.buscarButacaId(butaca.id))
             ) {
@@ -228,7 +228,7 @@ class SeleccionarAsientoViewController :KoinComponent{
             } else if (lista.contains(viewButacas.buscarButacaId(id))) {
                 viewButacas.actualizarButaca(
                     id,
-                    butaca.estado,
+                    Estado.ACTIVA,
                     butaca.tipo,
                     butaca.create,
                     Ocupacion.LIBRE,
@@ -255,6 +255,7 @@ class SeleccionarAsientoViewController :KoinComponent{
     }
 
     private fun asignarImagen(id: String, image: ImageView) {
+        logger.debug { "asignando imagen a $id" }
         val butaca=viewButacas.buscarButacaId(id)!!
         if (butaca.estado == Estado.MANTENIMIENTO) {
             image.image = Image(RoutesManager.getResourceAsStream("images/mentenimiento.png"))
@@ -268,9 +269,12 @@ class SeleccionarAsientoViewController :KoinComponent{
             image.image = Image(RoutesManager.getResourceAsStream("images/libre.png"))
         }else if (butaca.tipo == Tipo.VIP){
             image.image = Image(RoutesManager.getResourceAsStream("images/vip.png"))
-        }else{
+        }else if(butaca.ocupacion == Ocupacion.LIBRE){
+            image.image = Image(RoutesManager.getResourceAsStream("images/libre.png"))
+        } else{
             image.image = Image(RoutesManager.getResourceAsStream("images/libre.png"))
         }
+        logger.debug { "asignada imagen a $id / ${image.image}" }
     }
 
     private fun initDefaultEvents() {
@@ -340,6 +344,8 @@ class SeleccionarAsientoViewController :KoinComponent{
     private fun botonContinuarOnAction() {
         if (viewButacas.state.value.butacasSeleccionadas.size > 0){
             RoutesManager.changeScene(view = RoutesManager.View.SELECCOMPL, title = "Seleccionar Complemento")
+        }else{
+            RoutesManager.alerta("Butaca Nos eleccionada","No has seleccionado ninguna Butaca")
         }
     }
 

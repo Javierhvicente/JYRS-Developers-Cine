@@ -24,6 +24,15 @@ import java.time.LocalDateTime
 import java.util.*
 
 val logger= logging()
+
+/**
+ * Convertimos una entidad de linea de venta de butaca.
+ * @return Devuelve una linea de venta.
+ * @since 1.0
+ * @param butaca
+ * @author Samuel Cortés, Yahya El Hadri, Javier Hernández, Raúl Fernández.
+ */
+
 fun LineaVentaEntityButaca.toLineaVenta(butaca:Butaca):LineaVenta{
     logger.debug { "Mapeando lineaDeVentaEntity ${this.id} a LineaVenta" }
     return LineaVenta(
@@ -35,6 +44,14 @@ fun LineaVentaEntityButaca.toLineaVenta(butaca:Butaca):LineaVenta{
         updatedAt = LocalDateTime.parse(this.updated_at)
     )
 }
+
+/**
+ * Convertimos una entidad de linea de venta de complementos.
+ * @return Devuelve una linea de venta.
+ * @since 1.0
+ * @param complemento
+ * @author Samuel Cortés, Yahya El Hadri, Javier Hernández, Raúl Fernández.
+ */
 
 fun LineaVentaEntityComplemento.toLineaVenta(complemento:Complemento):LineaVenta{
     logger.debug { "Mapeando lineaDeVentaEntity ${this.id} a LineaVenta" }
@@ -48,6 +65,15 @@ fun LineaVentaEntityComplemento.toLineaVenta(complemento:Complemento):LineaVenta
     )
 }
 
+/**
+ * Convertimos una entidad de venta en un objeto de dominio.
+ * @return Devuelve una venta.
+ * @since 1.0
+ * @param cliente
+ * @param lineas
+ * @author Samuel Cortés, Yahya El Hadri, Javier Hernández, Raúl Fernández.
+ */
+
 fun VentaEntity.toVenta(cliente: Usuario, lineas:List<LineaVenta>):Venta{
     logger.debug { "Mapeando VentaEntity ${this.id} a Venta" }
     return Venta(
@@ -58,6 +84,14 @@ fun VentaEntity.toVenta(cliente: Usuario, lineas:List<LineaVenta>):Venta{
         updatedAt = LocalDateTime.parse(this.updated_at),
     )
 }
+
+/**
+ * Convertimos un objeto de dominio 'LineaVenta' en un objeto de transferencia de datos.
+ * @return
+ * @since 1.0
+ * @author Samuel Cortés, Yahya El Hadri, Javier Hernández, Raúl Fernández.
+ */
+
 fun LineaVenta.toLineaVentaDto():LineaVentaDto{
     logger.debug { "Mapeando LineaVenta ${this.id} a LineaVentaDto" }
     return LineaVentaDto(
@@ -73,6 +107,13 @@ fun LineaVenta.toLineaVentaDto():LineaVentaDto{
         updatedAt = this.updatedAt.toString()
     )
 }
+
+/**
+ * Convertimos un objeto de transferencia de datos 'LineaVentaDto' en un dominio 'LineaVenta'.
+ * @return Devuelve una linea de venta.
+ * @since 1.0
+ * @author Samuel Cortés, Yahya El Hadri, Javier Hernández, Raúl Fernández.
+ */
 
 fun LineaVentaDto.toLineaVenta():LineaVenta{
     logger.debug { "Mapeando LineaVentaDto ${this.id} a LineaVenta" }
@@ -90,6 +131,13 @@ fun LineaVentaDto.toLineaVenta():LineaVenta{
     )
 }
 
+/**
+ * Convertimos un objeto de transferencia de datos 'VentaDto' en un objeto de dominio de 'Venta'.
+ * @return Devuelve una venta.
+ * @since 1.0
+ * @author Samuel Cortés, Yahya El Hadri, Javier Hernández, Raúl Fernández.
+ */
+
 fun VentaDto.toVenta():Venta{
     logger.debug { "Mapeando VentaDto ${this.id} a Venta" }
     return Venta(
@@ -101,6 +149,12 @@ fun VentaDto.toVenta():Venta{
     )
 }
 
+/**
+ * Convertimos un objeto de dominio 'Venta' en un objeto de transferencia de datos 'VentaDto'.
+ * @return Devuelve una ventaDto.
+ * @since 1.0
+ * @author Samuel Cortés, Yahya El Hadri, Javier Hernández, Raúl Fernández.
+ */
 
 fun Venta.toVentaDto():VentaDto{
     logger.debug { "Mapeando Venta ${this.id} a VentaDto" }

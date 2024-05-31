@@ -27,15 +27,30 @@ class UserServiceImpl(
     private val cacheUsuario: CacheUsuario
 ): UserService {
 
+    /**
+     * Nos encargamos de guardar un usuario en el sistema.
+     * @return Devuelve un resultado que contiene el usuario guardado si la operación se realiza correctamente, si no salta un error.
+     * @author Yahya El Hadri, Raúl Fernández, Javier Hernández, Samuel Cortés
+     * @since 1.0
+     */
+
     override fun save(user: Usuario): Result<Usuario, UserError> {
         logger.debug { "Guardando Usuario: $user" }
        return if (repository.save(user) != null) {
            cacheUsuario.put(user.id, user)
            Ok(user)
        }else{
-           Err(UserError.ValidateProblem("No se ha podido guardar debido a un error de valdiación"))
+           Err(UserError.ValidateProblem("No se ha podido guardar debido a un error de validación"))
        }
     }
+
+    /**
+     * Servicio donde nos encargamos de cambiar la contraseña de un usuario en el sistema.
+     * @param email
+     * @param contraseña
+     * @author Yahya El Hadri, Raúl Fernández, Javier Hernández, Samuel Cortés
+     * @since 1.0
+     */
 
     override fun saveFromJson(user: Usuario): Result<Usuario, UserError> {
         logger.debug { "Guardando Usuario desde JSON: $user" }
@@ -104,6 +119,13 @@ class UserServiceImpl(
             }
         )
     }
+
+    /**
+     * Nos encargamos de obtener todos los usuarios registrados en el sistema.
+     * @return Devuelve un resultado que contiene una lista de objetos si la operación salío exitosa y en caso de que no se devuelve un error.
+     * @author Yahya El Hadri, Raúl Fernández, Javier Hernández, Samuel Cortés
+     * @since 1.0
+     */
 
     override fun findAll(): Result<List<Usuario>, UserError> {
         logger.debug { "Obteniendo todos los clientes registrados" }

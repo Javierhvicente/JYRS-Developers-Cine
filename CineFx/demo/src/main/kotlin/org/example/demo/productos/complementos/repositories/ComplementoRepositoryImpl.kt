@@ -72,7 +72,7 @@ class ComplementoRepositoryImpl(
                         tipo = producto.tipo,
                         id = producto.id,
                         nombre = producto.id.toString(),
-                        precio = producto.precio.toLong(),
+                        precio = producto.precio,
                         imagen = producto.imagen
                     )
                 }
@@ -96,7 +96,7 @@ class ComplementoRepositoryImpl(
         db.updateComplementoEntity(
             id= id,
             nombre = complemento.id,
-            precio = complemento.precio.toLong(),
+            precio = complemento.precio,
             tipo = complemento.tipo,
             imagen = imagen
         )

@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.demo.view.controllers.GestionComplViewController">
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" stylesheets="@../styles/cine.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.demo.view.controllers.GestionComplViewController">
     <children>
         <AnchorPane prefHeight="500.0" prefWidth="700.0">
             <children>
@@ -41,11 +41,11 @@
                                         </AnchorPane>
                                     </children>
                                 </HBox>
-                                <VBox layoutX="388.0" layoutY="118.4" prefHeight="268.0" prefWidth="276.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="114.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="118.0">
+                                <VBox fx:id="gestionComplemento" layoutX="388.0" layoutY="118.4" prefHeight="330.0" prefWidth="280.0" AnchorPane.bottomAnchor="52.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="118.0">
                                     <children>
-                                        <AnchorPane prefHeight="265.0" prefWidth="289.0" style="-fx-background-color: cfcfcf; -fx-border-color: white;">
+                                        <AnchorPane prefHeight="333.0" prefWidth="276.0">
                                             <children>
-                                                <Label layoutX="56.0" layoutY="27.0" text="COMPLEMENTO">
+                                                <Label layoutX="56.0" layoutY="21.0" text="COMPLEMENTO">
                                                     <font>
                                                         <Font name="Cambria" size="24.0" />
                                                     </font>
@@ -55,34 +55,34 @@
                                                         <Image url="@../images/interrogacion.png" />
                                                     </image>
                                                 </ImageView>
-                                                <Label layoutX="69.39999999999999" layoutY="123.0" text="Tipo" AnchorPane.leftAnchor="35.0">
+                                                <Label layoutX="35.0" layoutY="130.0" text="Tipo" AnchorPane.leftAnchor="35.0">
                                                     <font>
                                                         <Font name="Cambria" size="12.0" />
                                                     </font>
                                                 </Label>
-                                                <Label layoutX="69.39999999999999" layoutY="160.0" text="Nombre" AnchorPane.leftAnchor="35.0">
+                                                <Label layoutX="35.0" layoutY="167.0" text="Nombre" AnchorPane.leftAnchor="35.0">
                                                     <font>
                                                         <Font name="Cambria" size="12.0" />
                                                     </font>
                                                 </Label>
-                                                <Label layoutX="69.39999999999999" layoutY="198.0" text="Precio" AnchorPane.leftAnchor="35.0">
+                                                <Label layoutX="35.0" layoutY="205.0" text="Precio" AnchorPane.leftAnchor="35.0">
                                                     <font>
                                                         <Font name="Cambria" size="12.0" />
                                                     </font>
                                                 </Label>
-                                                <TextField fx:id="tipoTextfield" layoutX="88.0" layoutY="119.0" AnchorPane.rightAnchor="40.0" />
-                                                <TextField fx:id="nombreTextfield" layoutX="88.0" layoutY="156.0" AnchorPane.rightAnchor="40.0" />
-                                                <TextField fx:id="precioTextfield" layoutX="88.0" layoutY="194.0" AnchorPane.rightAnchor="40.0" />
-                                                <Button fx:id="añadirButton" layoutX="32.0" layoutY="232.0" mnemonicParsing="false" text="Añadir" AnchorPane.leftAnchor="32.0">
+                                                <TextField fx:id="tipoTextfield" editable="false" layoutX="90.4" layoutY="127.0" AnchorPane.rightAnchor="40.0" />
+                                                <TextField fx:id="nombreTextfield" editable="false" layoutX="90.4" layoutY="164.0" AnchorPane.rightAnchor="40.0" />
+                                                <TextField fx:id="precioTextfield" editable="false" layoutX="90.4" layoutY="202.0" AnchorPane.rightAnchor="40.0" />
+                                                <Button fx:id="añadirButton" layoutX="32.0" layoutY="267.0" mnemonicParsing="false" style="-fx-background-color: white;" text="Añadir" AnchorPane.leftAnchor="32.0">
                                                     <font>
                                                         <Font name="Bookman Old Style" size="12.0" />
                                                     </font></Button>
-                                                <Button fx:id="modificarButton" layoutX="103.0" layoutY="232.0" mnemonicParsing="false" text="Modificar">
+                                                <Button fx:id="modificarButton" layoutX="104.0" layoutY="267.0" mnemonicParsing="false" style="-fx-background-color: white;" text="Modificar">
                                                     <font>
                                                         <Font name="Bookman Old Style" size="12.0" />
                                                     </font>
                                                 </Button>
-                                                <Button fx:id="eliminarButton" layoutX="184.0" layoutY="232.0" mnemonicParsing="false" text="Eliminar" AnchorPane.rightAnchor="28.80000000000001">
+                                                <Button fx:id="eliminarButton" layoutX="195.0" layoutY="267.0" mnemonicParsing="false" style="-fx-background-color: white;" text="Eliminar" AnchorPane.rightAnchor="17.80000000000001">
                                                     <font>
                                                         <Font name="Bookman Old Style" size="12.0" />
                                                     </font>
@@ -91,18 +91,18 @@
                                         </AnchorPane>
                                     </children>
                                 </VBox>
-                                <VBox layoutX="36.0" layoutY="118.0" prefHeight="330.0" prefWidth="310.0" style="-fx-background-color: cfcfcf;" AnchorPane.bottomAnchor="51.200000000000045" AnchorPane.leftAnchor="36.0" AnchorPane.topAnchor="118.0" />
-                                <TextField fx:id="filtroNombre" layoutX="43.0" layoutY="124.0" prefHeight="26.0" prefWidth="100.0" promptText="Nombre" />
+                                <VBox fx:id="tablaGestComplementos" layoutX="36.0" layoutY="118.0" prefHeight="330.0" prefWidth="310.0" style="-fx-background-color: cfcfcf;" AnchorPane.bottomAnchor="51.200000000000045" AnchorPane.leftAnchor="36.0" AnchorPane.topAnchor="118.0" />
+                                <TextField fx:id="filtroNombre" layoutX="43.0" layoutY="124.0" prefHeight="26.0" prefWidth="139.0" promptText="Nombre" />
                                 <TableView fx:id="tablaComplementos" layoutX="41.0" layoutY="166.0" prefHeight="276.0" prefWidth="298.0">
                                     <columns>
                                         <TableColumn fx:id="nombreColumna" minWidth="100.0" prefWidth="141.60003662109375" text="Nombre" />
                                         <TableColumn fx:id="precioColumna" minWidth="100.0" prefWidth="156.79998779296875" text="Precio" />
                                     </columns>
                                 </TableView>
-                                <ComboBox fx:id="filtroPrecio" layoutX="258.0" layoutY="124.0" prefHeight="26.0" prefWidth="80.0" promptText="Precio" />
+                                <ComboBox fx:id="filtroPrecio" layoutX="188.0" layoutY="124.0" prefHeight="26.0" prefWidth="150.0" promptText="Precio" />
                                 <Separator layoutX="14.0" layoutY="118.0" orientation="VERTICAL" prefHeight="330.0" prefWidth="0.0" AnchorPane.leftAnchor="16.0" />
-                        <Button fx:id="importarBoton" layoutX="402.0" layoutY="405.0" mnemonicParsing="false" text="IMPORTAR" />
-                        <Button fx:id="exportarBoton" layoutX="548.0" layoutY="405.0" mnemonicParsing="false" text="EXPORTAR" />
+                        <Button fx:id="importarBoton" layoutX="199.0" layoutY="460.0" mnemonicParsing="false" style="-fx-background-color: white;" text="IMPORTAR" />
+                        <Button fx:id="exportarBoton" layoutX="384.0" layoutY="460.0" mnemonicParsing="false" style="-fx-background-color: white;" text="EXPORTAR" />
                             </children>
                         </AnchorPane>
                     </children>

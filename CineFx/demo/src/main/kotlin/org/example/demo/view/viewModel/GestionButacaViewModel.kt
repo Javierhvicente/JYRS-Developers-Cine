@@ -1,4 +1,4 @@
-package org.example.demo.view.viewModel
+package org.example.demo.usuarios.viewModel
 
 import com.github.michaelbull.result.mapBoth
 import com.github.michaelbull.result.onSuccess
@@ -47,7 +47,7 @@ class GestionButacaViewModel(
             )
         }
         lista.forEach {
-            service.update(it.id,it,it.ocupacion,it.precio)
+            service.update(it.id,it)
         }
         initState(lista)
         return true

@@ -6,14 +6,14 @@ import javafx.scene.control.Button
 import javafx.scene.control.PasswordField
 import javafx.scene.control.TextField
 import org.example.demo.routes.RoutesManager
-import org.example.demo.view.viewModel.OlvidarContraViewModel
+import org.example.demo.usuarios.viewModel.OlvidarContraViewModel
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 import org.lighthousegames.logging.logging
 
 private val logger= logging()
 class OlvidarContraViewController :KoinComponent{
-    private val view:OlvidarContraViewModel by inject()
+    private val view: OlvidarContraViewModel by inject()
     @FXML
     lateinit var textEmail: TextField
     @FXML

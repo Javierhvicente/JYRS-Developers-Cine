@@ -122,15 +122,15 @@ class ButacaServiceImpl(
      * @since 1.0
      */
 
-    override fun update(id: String, butaca: Butaca, ocupacion: Ocupacion, precio:Double): Result<Butaca, ButacaError> {
+    override fun update(id: String, butaca: Butaca): Result<Butaca, ButacaError> {
         logger.debug { "Actualizando butaca con id: $id" }
-        return validador.validarButaca(butaca).andThen {  b ->
-            repository.update(id, b,ocupacion,precio)
-                ?.let { Ok(it) }
-                ?: Err(ButacaError.ButacaNoActualizadas("No se ha podido actualizar la butaca: $id"))
-        }.andThen {
-            cache.put(id, butaca)
-        }
+        return validador.validarButaca(butaca).andThen { p ->
+             repository.update(id, butaca)
+                 ?.let { Ok(it) }
+                 ?: Err(ButacaError.ButacaNoActualizadas("No se ha podido actualizar la butaca con id: $id"))
+         }.andThen {
+             cache.put(id, it)
+         }
     }
 
     /**

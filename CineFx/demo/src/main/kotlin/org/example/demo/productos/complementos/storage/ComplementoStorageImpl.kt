@@ -18,6 +18,7 @@ private val logger=logging()
 
 /**
  * Manejamos adecuadamente la carga de datos del archivo csv.
+ * @param file
  * @return Devuelve un objeto de tipo complemento si la operación esta bien, si no devuelve un error producido por un fallo al procesar el csv.
  * @author Raúl Fernández, Javier Hernández, Yahya El Hadri, Samuel Cortés
  * @since 1.0
@@ -44,6 +45,14 @@ class ComplementoStorageImpl:ComplementoStorage {
         }
     }
 
+    /**
+     * En esta función nos encargamos de guardar una lista de objetos 'complemento' en un archivo JSON.
+     * @param file
+     * @param list
+     * @return Devuelve un result, donde si el método es exitoso devuelve un ok, en caso de que no sea exitoso devuelve un error.
+     * @author Raúl Fernández, Javier Hernández, Yahya El Hadri, Samuel Cortés
+     * @since 1.0
+     */
 
     override fun saveJson(file: File, list: List<Complemento>): Result<Unit, ComplementoError> {
         logger.debug { "Guardando complementos en fichero json" }
@@ -59,6 +68,14 @@ class ComplementoStorageImpl:ComplementoStorage {
         }
     }
 
+    /**
+     * Cargamos datos de complementos desde un archivo JSON.
+     * @param file
+     * @return Devuelve un result, donde si el método es exitoso devuelve un ok, en caso de que no sea exitoso devuelve un error.
+     * @author Raúl Fernández, Javier Hernández, Yahya El Hadri, Samuel Cortés
+     * @since 1.0
+     */
+
     override fun loadJson(file: File): Result<List<Complemento>, ComplementoError> {
         logger.debug { "Leyendo Complementos desde fichero json $file" }
         return try {
@@ -71,6 +88,15 @@ class ComplementoStorageImpl:ComplementoStorage {
             Err(ComplementoError.FicheroNoValido("Error al leer el JSON: ${e.message}"))
         }
     }
+
+    /**
+     * Guardamos el csv con todos los datos de complemento dentro.
+     * @param file
+     * @param list
+     * @return Devuelve un result, donde si el método es exitoso devuelve un ok, en caso de que no sea exitoso devuelve un error.
+     * @author Raúl Fernández, Javier Hernández, Yahya El Hadri, Samuel Cortés
+     * @since 1.0
+     */
 
     override fun saveCsv(file: File, list: List<Complemento>): Result<Unit, ComplementoError> {
         return try {

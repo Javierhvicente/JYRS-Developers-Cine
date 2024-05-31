@@ -52,7 +52,7 @@ class TestComplementoService {
 
     @Test
     fun getById() {
-        val complemento = Comida("PATATAS", CategoriaComida.PATATAS)
+        val complemento = Comida("PATATAS", CategoriaComida.PATATAS.toString(), precio = 2.0, imagen = "patatas-fritas.png" )
 
         Mockito.`when`(mockProductosCache.get(complemento.id)).thenReturn(Ok(complemento))
 
@@ -68,7 +68,7 @@ class TestComplementoService {
 
     @Test
     fun getByIdErr() {
-        val complemento = Bebida("REFRESCO", CategoriaBebida.REFRESCOS)
+        val complemento = Bebida("REFRESCO", CategoriaBebida.REFRESCOS.toString(), precio = 2.0, "soda.png")
         val message = "No existe el valor en la cache"
 
         Mockito.`when`(mockProductosCache.get(complemento.id)).thenReturn(Err(CacheError(message)))
@@ -87,7 +87,7 @@ class TestComplementoService {
 
     @Test
     fun save() {
-        val complemento = Bebida("REFRESCO", CategoriaBebida.REFRESCOS)
+        val complemento = Bebida("REFRESCO", CategoriaBebida.REFRESCOS.toString(), precio = 2.0, "soda.png")
         Mockito.`when`(mockComplementoRepository.save(complemento)).thenReturn(complemento)
         Mockito.`when`(mockProductosCache.put(complemento.id, complemento)).thenReturn(Ok(complemento))
 
@@ -102,22 +102,22 @@ class TestComplementoService {
 
     @Test
     fun updateComplemento() {
-        val complemento = Bebida("REFRESCO", CategoriaBebida.REFRESCOS)
-        Mockito.`when`(mockComplementoRepository.update(complemento.id, complemento)).thenReturn(complemento)
+        val complemento = Bebida("REFRESCO", CategoriaBebida.REFRESCOS.toString(), 2.0, imagen = "soda.png")
+        Mockito.`when`(mockComplementoRepository.update(complemento.id, complemento, imagen = "soda.png")).thenReturn(complemento)
         Mockito.`when`(mockProductosCache.put(complemento.id, complemento)).thenReturn(Ok(complemento))
 
-        val result = service.update(complemento.id, complemento)
+        val result = service.update(complemento.id, complemento, imagen = "soda.png")
 
         assertTrue(result.isOk)
         assertTrue(result.value == complemento)
 
-        verify(mockComplementoRepository, times(1)).update(complemento.id, complemento)
+        verify(mockComplementoRepository, times(1)).update(complemento.id, complemento, imagen = "soda.png")
         verify(mockProductosCache, times(1)).put(complemento.id, complemento)
     }
 
     @Test
     fun deleteComplemento() {
-        val complemento = Bebida("REFRESCO", CategoriaBebida.REFRESCOS)
+        val complemento = Bebida("REFRESCO", CategoriaBebida.REFRESCOS.toString(), precio = 2.0, imagen = "soda.png")
         Mockito.`when`(mockComplementoRepository.delete(complemento.id)).thenReturn(complemento)
         Mockito.`when`(mockProductosCache.remove(complemento.id)).thenReturn(Ok(complemento))
 

@@ -1,10 +1,11 @@
 package org.example.demo.view.controllers
 
 import javafx.fxml.FXML
+import javafx.scene.control.Button
 import javafx.scene.image.Image
 import javafx.scene.image.ImageView
 import org.example.demo.routes.RoutesManager
-import org.example.demo.view.viewModel.SeleccionarPeliculaViewModel
+import org.example.demo.usuarios.viewModel.SeleccionarPeliculaViewModel
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 import org.lighthousegames.logging.logging
@@ -13,7 +14,7 @@ import org.lighthousegames.logging.logging
 private val logger= logging()
 class SeleccionarPeliculaViewController :KoinComponent{
 
-    val view:SeleccionarPeliculaViewModel by inject()
+    val view: SeleccionarPeliculaViewModel by inject()
 
     @FXML
     lateinit var simioImage: ImageView
@@ -23,6 +24,8 @@ class SeleccionarPeliculaViewController :KoinComponent{
     lateinit var tarotImage:ImageView
     @FXML
     lateinit var especialistaImage:ImageView
+    @FXML
+    lateinit var cerrarSesionBoton:Button
 
     @FXML
     fun initialize(){
@@ -36,6 +39,11 @@ class SeleccionarPeliculaViewController :KoinComponent{
         garfieldImage.setOnMouseClicked { garfieldOnAction() }
         tarotImage.setOnMouseClicked { tarotOnAction() }
         especialistaImage.setOnMouseClicked { especialistaOnAction() }
+        cerrarSesionBoton.setOnAction { cerrarSesionOnAction() }
+    }
+
+    private fun cerrarSesionOnAction() {
+        RoutesManager.changeScene(view = RoutesManager.View.INICIO_SESION, title = "Inicio Sesion")
     }
 
     private fun simioOnAction() {

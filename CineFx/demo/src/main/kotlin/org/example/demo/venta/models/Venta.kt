@@ -4,6 +4,17 @@ import org.example.demo.usuarios.models7.Usuario
 import java.time.LocalDateTime
 import java.util.*
 
+/**
+ * Clase de venta.
+ * @property id
+ * @property cliente
+ * @property lineas
+ * @property createdAt
+ * @property updatedAt
+ * @since 1.0
+ * @author Raúl Fernández, Yahya El Hadri, Samuel Cortés, Javier Hernández.
+ */
+
 
 data class Venta(
     val id: UUID = UUID.randomUUID(),

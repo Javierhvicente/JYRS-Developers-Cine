@@ -13,18 +13,17 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="700.0" style="-fx-background-color: #061326;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.demo.view.controllers.EstadoCineViewController">
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="700.0" style="-fx-background-color: #061326;" stylesheets="@../styles/cine.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.demo.view.controllers.EstadoCineViewController">
     <children>
         <HBox alignment="TOP_CENTER" prefHeight="122.0" prefWidth="700.0">
             <children>
                 <AnchorPane prefHeight="94.0" prefWidth="700.0">
                     <children>
-                        <Label layoutX="257.0" layoutY="17.0" prefHeight="58.0" prefWidth="174.0" text="ESTADO SALA" textAlignment="CENTER" textFill="WHITE" AnchorPane.topAnchor="17.0">
+                        <Label layoutX="257.0" layoutY="18.6" prefHeight="58.0" prefWidth="174.0" text="ESTADO SALA" textAlignment="CENTER" textFill="WHITE" AnchorPane.topAnchor="18.6">
                             <font>
                                 <Font name="Arial Rounded MT Bold" size="24.0" />
                             </font>
                         </Label>
-                        <Label layoutX="236.0" layoutY="56.0" prefHeight="18.0" prefWidth="218.0" text="--------------------------------------------" textFill="WHITE" AnchorPane.leftAnchor="236.0" AnchorPane.rightAnchor="247.20000000000005" AnchorPane.topAnchor="56.0" />
                         <ImageView fx:id="menuAdmin" fitHeight="40.0" fitWidth="40.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="10.0">
                             <image>
                                 <Image url="@../images/menu.png" />
@@ -285,21 +284,16 @@
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <Label fx:id="recaudacionTotal" layoutX="146.0" layoutY="414.0" prefHeight="18.0" prefWidth="40.0" textFill="#fcfafa">
+                  <Label fx:id="recaudacionTotal" layoutX="146.0" layoutY="414.0" prefHeight="20.0" prefWidth="84.0" textFill="#fcfafa">
                      <font>
                         <Font size="14.0" />
                      </font></Label>
-                  <ImageView fitHeight="221.0" fitWidth="200.0" layoutX="35.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="166.0" fitWidth="242.0" layoutX="21.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../../../../../../../OneDrive/Escritorio/simbolos%20png/logo%20(1).png" />
+                        <Image url="@../images/logo.png" />
                      </image>
                   </ImageView>
-                  <Label fx:id="LocalTime" layoutX="175.0" layoutY="216.0" textFill="WHITE">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="LocalDate" layoutX="43.0" layoutY="217.0" textFill="WHITE">
+                  <Label fx:id="localDate" layoutX="55.0" layoutY="223.0" prefHeight="20.0" prefWidth="181.0" textAlignment="CENTER" textFill="WHITE">
                      <font>
                         <Font size="14.0" />
                      </font>

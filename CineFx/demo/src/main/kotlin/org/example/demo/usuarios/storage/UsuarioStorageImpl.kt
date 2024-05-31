@@ -13,7 +13,20 @@ import org.lighthousegames.logging.logging
 import java.io.File
 
 private val logger= logging()
+
+
+
 class UsuarioStorageImpl:UsuarioStorage {
+
+    /**
+     * Nos encargamos de almacenar una lista de usuarios en un archivo JSON.
+     * @return Devuelve un resultado que contiene la cantidad de usuarios almacenados.
+     * @param file
+     * @param lista
+     * @since 1.0
+     * @author Samuel Cortés, Raúl Fernández, Yahya El Hadri,
+     */
+
     override fun storeJson(file: File, lista: List<Usuario>): Result<Long, UserError> {
         logger.debug { "Guardando usuarios en fichero json $file" }
         return try {
@@ -28,6 +41,14 @@ class UsuarioStorageImpl:UsuarioStorage {
             Err(UserError.StorageError("Error al escribir el JSON: ${e.message}"))
         }
     }
+
+    /**
+     * Nos encargamos de cargar datos desde un archivo JSON.
+     * @return Devolverá un resultado exitoso conteniendo una lista de objetos 'Usuario' y si ocurre algún error devolverá un error.
+     * @param file
+     * @since 1.0
+     * @author Samuel Cortés, Raúl Fernández, Yahya El Hadri,
+     */
 
     override fun loadJson(file: File): Result<List<Usuario>, UserError> {
         logger.debug { "Leyendo Usuarios desde $file" }

@@ -39,11 +39,11 @@ class TestComplementoRepository {
 
     @Test
     fun findById() {
-        complementoRepository.save(Comida("FRUTOS SECOS",CategoriaComida.FRUTOSSECOS))
+        complementoRepository.save(Comida("FRUTOS SECOS",CategoriaComida.FRUTOSSECOS.toString(), imagen = "tuerca.png", precio = 2.5))
         val complemento = complementoRepository.findById("FRUTOS SECOS")
 
         assertEquals("FRUTOS SECOS", complemento?.id)
-        assertEquals(CategoriaComida.FRUTOSSECOS, (complemento as Comida).nombre)
+        assertEquals(CategoriaComida.FRUTOSSECOS, complemento?.tipo)
     }
 
     @Test
@@ -58,27 +58,33 @@ class TestComplementoRepository {
         val complemento = complementoRepository.save(
             Bebida(
                 id = "AGUA",
-                nombre = CategoriaBebida.AGUA,
+                imagen = "agua.png",
+                tipo = CategoriaBebida.AGUA.toString(),
+                precio = 2.0
             )
         )
 
         assertEquals("AGUA", complemento.id)
-        assertEquals(CategoriaBebida.AGUA, (complemento as Bebida).nombre)
+        assertEquals(CategoriaBebida.AGUA, complemento.tipo)
     }
 
     @Test
     fun update() {
-        complementoRepository.save(Bebida("AGUA",CategoriaBebida.AGUA))
+        complementoRepository.save(Bebida("AGUA", CategoriaBebida.AGUA.toString(), imagen = "agua.png", precio = 2.0))
         val complemento = complementoRepository.update(
             "AGUA",
             Bebida(
                 id = "AGUA",
-                nombre = CategoriaBebida.AGUA,
-            )
+                tipo = CategoriaBebida.AGUA.toString(),
+                imagen = "agua.png",
+                precio = 3.0
+            ),
+            imagen = "agua.png"
         )
 
         assertEquals("AGUA", complemento?.id)
-        assertEquals(CategoriaBebida.AGUA, (complemento as Bebida).nombre)
+        assertEquals(CategoriaBebida.AGUA, complemento?.tipo)
+        assertEquals(3.0, complemento?.precio)
     }
 
     @Test
@@ -87,8 +93,11 @@ class TestComplementoRepository {
             "15",
             Bebida(
                 id = "REFRESCO",
-                nombre = CategoriaBebida.REFRESCOS,
-            )
+                tipo = CategoriaBebida.AGUA.toString(),
+                imagen = "agua.png",
+                precio = 3.0
+            ),
+            imagen = "agua.png"
         )
 
         assertEquals(null, complemento)
@@ -96,16 +105,14 @@ class TestComplementoRepository {
 
     @Test
     fun delete() {
-        complementoRepository.save(Bebida("AGUA",CategoriaBebida.AGUA))
+        complementoRepository.save(Bebida("AGUA", CategoriaBebida.AGUA.toString(), imagen = "agua.png", precio = 3.0))
         val complemento = complementoRepository.delete("AGUA")
-
         assertEquals("AGUA", complemento?.id)
     }
 
     @Test
     fun deleteNotFound() {
         val complemento = complementoRepository.delete("20")
-
         assertEquals(null, complemento)
     }
 }
